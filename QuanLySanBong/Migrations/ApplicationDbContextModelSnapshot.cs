@@ -67,7 +67,7 @@ namespace QuanLySanBong.Migrations
                         {
                             Id = 1,
                             Email = "admin",
-                            Password = "$2a$11$ueyunPjin2aMwMOyv4c5ZOSoCVy2EJDKh4.QHN0mTobCHWCpMWI5K",
+                            Password = "$2a$11$C.rH2mESqY/rpajkhPgRNOU5gmVWHUe.xz5lvKbM7n.nKwCPxXdh.",
                             Role = "Admin"
                         });
                 });

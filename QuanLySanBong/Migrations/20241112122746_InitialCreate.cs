@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace QuanLySanBong.Migrations
 {
     /// <inheritdoc />
-    public partial class initAccount : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -78,7 +78,7 @@ namespace QuanLySanBong.Migrations
             migrationBuilder.InsertData(
                 table: "Account",
                 columns: new[] { "Id", "Email", "IdCustomer", "IdStaff", "Password", "Role" },
-                values: new object[] { 1, "admin", null, null, "$2a$11$ueyunPjin2aMwMOyv4c5ZOSoCVy2EJDKh4.QHN0mTobCHWCpMWI5K", "Admin" });
+                values: new object[] { 1, "admin", null, null, "$2a$11$C.rH2mESqY/rpajkhPgRNOU5gmVWHUe.xz5lvKbM7n.nKwCPxXdh.", "Admin" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Account_IdCustomer",

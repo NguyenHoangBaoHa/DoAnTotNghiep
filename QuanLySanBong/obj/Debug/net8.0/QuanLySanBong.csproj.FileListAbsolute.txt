@@ -145,3 +145,4 @@ E:\Demo\1\QuanLySanBong\obj\Debug\net8.0\refint\QuanLySanBong.dll
 E:\Demo\1\QuanLySanBong\obj\Debug\net8.0\QuanLySanBong.pdb
 E:\Demo\1\QuanLySanBong\obj\Debug\net8.0\QuanLySanBong.genruntimeconfig.cache
 E:\Demo\1\QuanLySanBong\obj\Debug\net8.0\ref\QuanLySanBong.dll
+E:\Demo\1\QuanLySanBong\obj\Debug\net8.0\QuanLySanBong.sourcelink.json

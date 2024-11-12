@@ -12,8 +12,8 @@ using QuanLySanBong.Data;
 namespace QuanLySanBong.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241105084709_initAccount")]
-    partial class initAccount
+    [Migration("20241112122746_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,7 +70,7 @@ namespace QuanLySanBong.Migrations
                         {
                             Id = 1,
                             Email = "admin",
-                            Password = "$2a$11$ueyunPjin2aMwMOyv4c5ZOSoCVy2EJDKh4.QHN0mTobCHWCpMWI5K",
+                            Password = "$2a$11$C.rH2mESqY/rpajkhPgRNOU5gmVWHUe.xz5lvKbM7n.nKwCPxXdh.",
                             Role = "Admin"
                         });
                 });
