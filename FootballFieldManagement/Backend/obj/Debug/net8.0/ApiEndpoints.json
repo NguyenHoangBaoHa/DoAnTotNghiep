@@ -1,0 +1,44 @@
+[
+  {
+    "ContainingType": "Backend.Controllers.AccountController",
+    "Method": "CreateStaff",
+    "RelativePath": "api/Account/create-staff",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createStaffDto",
+        "Type": "Backend.Entities.Account.Dto.CreateStaffDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Backend.Controllers.AccountController",
+    "Method": "Login",
+    "RelativePath": "api/Account/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDto",
+        "Type": "Backend.Entities.Account.Dto.LoginDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Backend.Controllers.PingController",
+    "Method": "Post",
+    "RelativePath": "api/Ping",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

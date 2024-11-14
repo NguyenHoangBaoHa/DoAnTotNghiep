@@ -1,0 +1,75 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Demo\\1\\FootballFieldManagement\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\service\\account\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\service\\account\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\entities\\staff\\dto\\staffdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\entities\\staff\\dto\\staffdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\entities\\staff\\model\\staffmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\entities\\staff\\model\\staffmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 232,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccountService.cs",
+              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Service\\Account\\AccountService.cs",
+              "RelativeDocumentMoniker": "Backend\\Service\\Account\\AccountService.cs",
+              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Service\\Account\\AccountService.cs",
+              "RelativeToolTip": "Backend\\Service\\Account\\AccountService.cs",
+              "ViewState": "AgIAACwAAAAAAAAAAAAwwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T09:49:39.846Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "StaffDto.cs",
+              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Entities\\Staff\\Dto\\StaffDto.cs",
+              "RelativeDocumentMoniker": "Backend\\Entities\\Staff\\Dto\\StaffDto.cs",
+              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Entities\\Staff\\Dto\\StaffDto.cs",
+              "RelativeToolTip": "Backend\\Entities\\Staff\\Dto\\StaffDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T09:48:10.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StaffModel.cs",
+              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Entities\\Staff\\Model\\StaffModel.cs",
+              "RelativeDocumentMoniker": "Backend\\Entities\\Staff\\Model\\StaffModel.cs",
+              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Entities\\Staff\\Model\\StaffModel.cs",
+              "RelativeToolTip": "Backend\\Entities\\Staff\\Model\\StaffModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T09:48:08.257Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
