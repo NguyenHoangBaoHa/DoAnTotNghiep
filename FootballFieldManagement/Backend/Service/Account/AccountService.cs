@@ -1,5 +1,7 @@
 ﻿using Backend.Entities.Account.Dto;
 using Backend.Entities.Account.Model;
+using Backend.Entities.Customer.Dto;
+using Backend.Entities.Customer.Model;
 using Backend.Entities.Staff.Model;
 using Backend.Helpers;
 using Backend.Service.Account;
@@ -87,6 +89,58 @@ public class AccountService : IAccountService
         {
             Console.WriteLine($"Error in CreateStaff: {ex.Message}");
             throw new InvalidOperationException($"Error saving staff or account: {ex.Message}");
+        }
+    }
+
+    public async Task<AccountModel> RegisterCustomer(CustomerDto customerDto, AccountDto accountDto)
+    {
+        var existingAccount = await _unitOfWork.Accounts.GetByEmail(accountDto.Email);
+        if (existingAccount != null)
+        {
+            throw new InvalidOperationException("Email đã tồn tại.");
+        }
+
+        var customer = new CustomerModel
+        {
+            DisplayName = customerDto.DisplayName,
+            DateOfBirth = customerDto.DateOfBirth,
+            CCCD = customerDto.CCCD,
+            Gender = customerDto.Gender,
+            PhoneNumber = customerDto.PhoneNumber,
+            Address = customerDto.Address,
+        };
+
+        var account = new AccountModel
+        {
+            Email = accountDto.Email,
+            Password = BCrypt.Net.BCrypt.HashPassword(accountDto.Password), // Hash mật khẩu
+            Role = "Customer",
+            IdCustomer = customer.Id,
+        };
+
+        try
+        {
+            // Lưu khách hàng trước để lấy ID
+            await _unitOfWork.Accounts.AddCustomer(customer);
+            await _unitOfWork.CompleteAsync();
+
+            if(customer.Id == 0)
+            {
+                throw new InvalidOperationException("Không thể lấy ID của khách hàng sau khi lưu.");
+            }
+
+            // Liên kết ID khách hàng với tài khoản
+            account.IdCustomer = customer.Id;
+
+            // Lưu tài khoản
+            await _unitOfWork.Accounts.Add(account);
+            await _unitOfWork.CompleteAsync();
+
+            return account;
+        }
+        catch (Exception ex)
+        {
+            throw new InvalidOperationException($"Lỗi khi đăng ký tài khoản: {ex.Message}");
         }
     }
 }

@@ -73,5 +73,35 @@ namespace Backend.Controllers
                 throw new InvalidOperationException($"Error saving staff or account: {ex.Message}");
             }
         }
+
+        [HttpPost("register-customer")]
+        [AllowAnonymous]
+        public async Task<IActionResult> RegisterCustomer([FromBody] RegisterCustomerDto registerCustomerDto)
+        {
+            if (registerCustomerDto == null || registerCustomerDto.Account == null || registerCustomerDto.Customer == null)
+            {
+                return BadRequest("Dữ liệu không hợp lệ.");
+            }
+
+            try
+            {
+                var account = await _service.RegisterCustomer(registerCustomerDto.Customer, registerCustomerDto.Account);
+
+                return Ok(new
+                {
+                    email = account.Email,
+                    role = account.Role
+                });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { error = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = $"Lỗi hệ thống: {ex.Message}" });
+            }
+        }
+
     }
 }

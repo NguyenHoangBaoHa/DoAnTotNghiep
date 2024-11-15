@@ -1,51 +1,50 @@
-/* App.css hoặc Navbar.css */
-
+/* Navbar Styles */
 .navbar {
-  background-color: #3f51b5; /* Màu nền của navbar */
-  padding: 10px 20px; /* Khoảng cách bên trong */
-  display: flex; /* Sử dụng flexbox để căn chỉnh */
-  justify-content: space-between; /* Tạo khoảng cách giữa các phần tử */
-  align-items: center; /* Căn giữa các phần tử dọc */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Đổ bóng cho navbar */
+  background-color: #333;
+  color: #fff;
+  padding: 0.5rem 1rem;
 }
 
 .navbar-container {
   display: flex;
-  align-items: center; /* Căn giữa các phần tử dọc */
+  justify-content: space-between;
+  align-items: center;
 }
 
 .navbar-logo {
-  color: white; /* Màu chữ cho logo */
-  font-size: 24px; /* Kích thước chữ cho logo */
-  text-decoration: none; /* Không có gạch chân */
-  margin-right: 20px; /* Khoảng cách bên phải */
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
 }
 
 .navbar-menu {
-  display: flex; /* Sử dụng flexbox cho menu */
-  align-items: center; /* Căn giữa các phần tử dọc */
+  display: flex;
+  gap: 1rem;
 }
 
 .navbar-menu a {
-  color: white; /* Màu chữ cho các liên kết */
-  text-decoration: none; /* Không có gạch chân */
-  padding: 10px 15px; /* Khoảng cách bên trong cho các liên kết */
-  transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền khi hover */
+  color: #fff;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: background-color 0.3s ease;
 }
 
 .navbar-menu a:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Hiệu ứng hover */
+  background-color: #555;
+  border-radius: 4px;
 }
 
-.navbar-menu button {
-  background-color: transparent; /* Nền trong suốt cho nút đăng xuất */
-  color: white; /* Màu chữ cho nút */
-  border: none; /* Không có viền */
-  cursor: pointer; /* Con trỏ cho biết đây là nút có thể nhấn */
-  padding: 10px 15px; /* Khoảng cách bên trong cho nút */
-  transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền khi hover */
+.logout-btn {
+  background: none;
+  border: 1px solid #fff;
+  color: #fff;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
 }
 
-.navbar-menu button:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Hiệu ứng hover cho nút */
+.logout-btn:hover {
+  background-color: #555;
 }

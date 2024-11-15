@@ -1,7 +1,7 @@
 import './App.css';
 import Navbar from './Components/Navbar';
-import CreateStaff from './Pages/CreateStaff';
 import Login from './Pages/Login';
+import CreateStaff from './Pages/Admin/CreateStaff';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Sửa chỗ này
 
 function App() {

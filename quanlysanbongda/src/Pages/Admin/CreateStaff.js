@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { AccountAPI } from '../Api/api';
+import { AccountAPI } from '../../Api/api';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import '../Css/CreateStaff.css';
+import '../../Css/CreateStaff.css';
 
 const CreateStaff = () => {
   const [staffData, setStaffData] = useState({

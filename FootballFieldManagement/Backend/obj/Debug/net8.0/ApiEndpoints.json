@@ -32,6 +32,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Backend.Controllers.AccountController",
+    "Method": "RegisterCustomer",
+    "RelativePath": "api/Account/register-customer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registerCustomerDto",
+        "Type": "Backend.Entities.Account.Dto.RegisterCustomerDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Backend.Controllers.PingController",
     "Method": "Post",
     "RelativePath": "api/Ping",

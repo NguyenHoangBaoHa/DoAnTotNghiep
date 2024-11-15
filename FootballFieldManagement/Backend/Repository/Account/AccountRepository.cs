@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Backend.Data;
 using Backend.Entities.Account.Model;
+using Backend.Entities.Customer.Model;
 
 namespace Backend.Repository.Account
 {
@@ -27,5 +28,11 @@ namespace Backend.Repository.Account
         {
             await _context.Accounts.AddAsync(account);
         }
+
+        public async Task AddCustomer(CustomerModel customer)
+        {
+            await _context.Customers.AddAsync(customer);
+        }
+
     }
 }

@@ -5,22 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\service\\account\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\service\\account\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\entities\\staff\\model\\staffmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\entities\\staff\\model\\staffmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\entities\\account\\model\\accountmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\entities\\account\\model\\accountmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,50 +14,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 232,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\appsettings.json",
-              "RelativeDocumentMoniker": "Backend\\appsettings.json",
-              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\appsettings.json",
-              "RelativeToolTip": "Backend\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAC6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-11-14T07:35:29.068Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "StaffModel.cs",
-              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Entities\\Staff\\Model\\StaffModel.cs",
-              "RelativeDocumentMoniker": "Backend\\Entities\\Staff\\Model\\StaffModel.cs",
-              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Entities\\Staff\\Model\\StaffModel.cs",
-              "RelativeToolTip": "Backend\\Entities\\Staff\\Model\\StaffModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T04:23:30.453Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AccountService.cs",
-              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Service\\Account\\AccountService.cs",
-              "RelativeDocumentMoniker": "Backend\\Service\\Account\\AccountService.cs",
-              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Service\\Account\\AccountService.cs",
-              "RelativeToolTip": "Backend\\Service\\Account\\AccountService.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAwwFoAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T04:14:38.042Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -83,22 +28,10 @@
               "RelativeDocumentMoniker": "Backend\\Controllers\\AccountController.cs",
               "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Controllers\\AccountController.cs",
               "RelativeToolTip": "Backend\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAowEgAAABkAAAAAAAAAA==",
+              "ViewState": "AgIAADsAAAAAAAAAAAAqwE0AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T04:05:08.564Z",
+              "WhenOpened": "2024-11-15T10:05:26.576Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AccountModel.cs",
-              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Entities\\Account\\Model\\AccountModel.cs",
-              "RelativeDocumentMoniker": "Backend\\Entities\\Account\\Model\\AccountModel.cs",
-              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Entities\\Account\\Model\\AccountModel.cs",
-              "RelativeToolTip": "Backend\\Entities\\Account\\Model\\AccountModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T03:52:30.692Z"
             }
           ]
         }
