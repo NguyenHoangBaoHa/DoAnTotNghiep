@@ -33,7 +33,7 @@ public class AccountService : IAccountService
         var token = _tokenService.CreateToken(account, _config);
 
         // Tạo token JWT sau khi xác thực thành công
-        return new LoginModel() { Username = account.Email, Token = token };
+        return new LoginModel() { Username = account.Email, Token = token, Role = account.Role };
     }
 
     // Tạo tài khoản Staff (chỉ Admin mới làm được)

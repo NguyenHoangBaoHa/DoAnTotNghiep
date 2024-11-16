@@ -1,21 +1,39 @@
 import './App.css';
 import Navbar from './Components/Navbar';
-import Login from './Pages/Login';
-import CreateStaff from './Pages/Admin/CreateStaff';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Sửa chỗ này
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'; // Sửa chỗ này
+import Home from "../src/Pages/Home";
+import Login from "../src/Pages/Login";
+import Register from "../src/Pages/Register";
+import ManagerPitches from "../src/Pages/Admin/ManagePitches";
 
-function App() {
+const ProtectedRoute = ({ role, children }) => {
+  const token = localStorage.getItem("token");
+  const userRole = localStorage.getItem("role");
+
+  if (!token) return <Navigate to="/login" />
+
+  if (role & userRole !== role) return <Navigate to="/" />
+  return children;
+}
+
+const App = () => {
   return (
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/dashboard" element={<h1>Trang Chủ</h1>} />
-        <Route path="/" element={<Login />} />
-        <Route path="/register" element={<h1>Đăng Ký</h1>} />
-        <Route path="/manage-pitches" element={<h1>Quản lý sân</h1>} />
-        <Route path="/manage-pitch-types" element={<h1>Quản lý loại sân</h1>} />
-        <Route path="/manage-bookings" element={<h1>Quản lý đặt sân</h1>} />
-        <Route path="/create-staff" element={<CreateStaff />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
+        {/* Admin Routes */}
+        <Route
+          path="/manage-pitches"
+          element={
+            <ProtectedRoute role="Admin">
+              <ManagerPitches />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );
