@@ -40,10 +40,10 @@ const Navbar = () => {
               {/* Admin Menu */}
               {role === "Admin" && (
                 <>
-                  <Link to="/manage-pitches">Quản lý sân</Link>
-                  <Link to="/manage-pitch-types">Quản lý loại sân</Link>
-                  <Link to="/manage-bookings">Quản lý đặt sân</Link>
-                  <Link to="/revenue-report">Báo cáo doanh thu</Link>
+                  <Link to="/manage-pitches-admin">Quản lý sân</Link>
+                  <Link to="/manage-pitch-types-admin">Quản lý loại sân</Link>
+                  <Link to="/manage-bookings-admin">Quản lý đặt sân</Link>
+                  <Link to="/revenue-report-admin">Báo cáo doanh thu</Link>
                   <Link to="/create-staff">Đăng ký tài khoản nhân viên</Link>
                 </>
               )}
@@ -51,9 +51,8 @@ const Navbar = () => {
               {/* Staff Menu */}
               {role === "Staff" && (
                 <>
-                  <Link to="/manage-pitches">Quản lý sân</Link>
-                  <Link to="/manage-bookings">Quản lý đặt sân</Link>
-                  <Link to="/manage-customers">Quản lý khách hàng</Link>
+                  <Link to="/manage-pitches-staff">Quản lý sân</Link>
+                  <Link to="/manage-bookings-staff">Quản lý đặt sân</Link>
                 </>
               )}
 

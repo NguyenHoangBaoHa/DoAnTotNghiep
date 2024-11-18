@@ -53,6 +53,30 @@ const AccountAPI = {
       }
     }
   },
+
+  registerCustomer: async (customerData) => {
+    try {
+      console.log("Sending customer data: ", customerData);
+
+      const token = localStorage.getItem('token');
+      const response = await api.post('/Account/register-customer', customerData, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        },
+        withCredentials: true
+      });
+      console.log('User registered successfully: ', response.data);
+      return response.data;
+    } catch (error) {
+      if (error.response) {
+        console.log('Register failed: ', error.response.data); // Log chi tiết lỗi từ backend
+        throw error.response.data; // Throw error data từ backend
+      } else {
+        console.error('Request failed:', error.message);
+        throw new Error('Cannot connect to server');
+      }
+    }
+  },
 };
 
 export { AccountAPI };
