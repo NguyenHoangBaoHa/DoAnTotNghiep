@@ -1,16 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "E:\\Demo\\1\\FootballFieldManagement\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\repository\\pitch\\pitchrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\repository\\pitch\\pitchrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\repository\\pitch\\ipitchrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\repository\\pitch\\ipitchrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -18,37 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 232,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PitchRepository.cs",
-              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Repository\\Pitch\\PitchRepository.cs",
-              "RelativeDocumentMoniker": "Backend\\Repository\\Pitch\\PitchRepository.cs",
-              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Repository\\Pitch\\PitchRepository.cs",
-              "RelativeToolTip": "Backend\\Repository\\Pitch\\PitchRepository.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T08:16:47.537Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IPitchRepository.cs",
-              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Repository\\Pitch\\IPitchRepository.cs",
-              "RelativeDocumentMoniker": "Backend\\Repository\\Pitch\\IPitchRepository.cs",
-              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Repository\\Pitch\\IPitchRepository.cs",
-              "RelativeToolTip": "Backend\\Repository\\Pitch\\IPitchRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T08:15:08.778Z",
-              "EditorCaption": ""
             }
           ]
         }

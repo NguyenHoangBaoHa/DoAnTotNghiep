@@ -93,6 +93,10 @@ namespace Backend.Data
                 .IsRequired()
                 .HasMaxLength(100);
 
+            modelBuilder.Entity<PitchTypeModel>()
+                .Property(p => p.Price)
+                .HasColumnType("decimal(18, 2)"); // Định nghĩa kiểu dữ liệu của cột trong SQL
+
             modelBuilder.Entity<PitchModel>()
                 .Property(p => p.Status)
                 .IsRequired()
