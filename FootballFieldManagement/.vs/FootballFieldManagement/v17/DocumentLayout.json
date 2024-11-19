@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "E:\\Demo\\1\\FootballFieldManagement\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\service\\account\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\service\\account\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\repository\\pitch\\pitchrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\repository\\pitch\\pitchrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\entities\\customer\\model\\customermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\entities\\customer\\model\\customermodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\entities\\staff\\model\\staffmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\entities\\staff\\model\\staffmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\repository\\pitch\\ipitchrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\repository\\pitch\\ipitchrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,54 +27,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AccountService.cs",
-              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Service\\Account\\AccountService.cs",
-              "RelativeDocumentMoniker": "Backend\\Service\\Account\\AccountService.cs",
-              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Service\\Account\\AccountService.cs",
-              "RelativeToolTip": "Backend\\Service\\Account\\AccountService.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwIkAAAAAAAAAAAAAAA==",
+              "Title": "PitchRepository.cs",
+              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Repository\\Pitch\\PitchRepository.cs",
+              "RelativeDocumentMoniker": "Backend\\Repository\\Pitch\\PitchRepository.cs",
+              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Repository\\Pitch\\PitchRepository.cs",
+              "RelativeToolTip": "Backend\\Repository\\Pitch\\PitchRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAqwBUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-18T12:16:37.689Z",
+              "WhenOpened": "2024-11-19T08:16:47.537Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CustomerModel.cs",
-              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Entities\\Customer\\Model\\CustomerModel.cs",
-              "RelativeDocumentMoniker": "Backend\\Entities\\Customer\\Model\\CustomerModel.cs",
-              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Entities\\Customer\\Model\\CustomerModel.cs",
-              "RelativeToolTip": "Backend\\Entities\\Customer\\Model\\CustomerModel.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwB0AAAArAAAAAAAAAA==",
+              "Title": "IPitchRepository.cs",
+              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Repository\\Pitch\\IPitchRepository.cs",
+              "RelativeDocumentMoniker": "Backend\\Repository\\Pitch\\IPitchRepository.cs",
+              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Repository\\Pitch\\IPitchRepository.cs",
+              "RelativeToolTip": "Backend\\Repository\\Pitch\\IPitchRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-18T12:15:39.599Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "StaffModel.cs",
-              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Entities\\Staff\\Model\\StaffModel.cs",
-              "RelativeDocumentMoniker": "Backend\\Entities\\Staff\\Model\\StaffModel.cs",
-              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Entities\\Staff\\Model\\StaffModel.cs",
-              "RelativeToolTip": "Backend\\Entities\\Staff\\Model\\StaffModel.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAxwCMAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-18T12:15:08.919Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Backend\\Controllers\\AccountController.cs",
-              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Backend\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAuwB8AAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-18T11:35:38.849Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-19T08:15:08.778Z"
             }
           ]
         }

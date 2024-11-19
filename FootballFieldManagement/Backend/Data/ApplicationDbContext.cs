@@ -2,6 +2,9 @@
 using Backend.Entities.Account.Model;
 using Backend.Entities.Customer.Model;
 using Backend.Entities.Staff.Model;
+using Backend.Entities.Pitch.Model;
+using Backend.Entities.PitchType.Model;
+using Backend.Entities.Enums;
 
 namespace Backend.Data
 {
@@ -12,6 +15,8 @@ namespace Backend.Data
         public DbSet<AccountModel> Accounts { get; set; }
         public DbSet<StaffModel> Staffs { get; set; }
         public DbSet<CustomerModel> Customers { get; set; }
+        public DbSet<PitchModel> Pitches { get; set; }
+        public DbSet<PitchTypeModel> PitchesType { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -77,6 +82,41 @@ namespace Backend.Data
                 .HasOne(a => a.Customer)
                 .WithOne(c => c.Account)
                 .HasForeignKey<AccountModel>(a => a.IdCustomer);
+
+            // Cấu hình bảng Pitch (Sân)
+            modelBuilder.Entity<PitchModel>()
+                .ToTable("Pitch")
+                .HasKey(p => p.Id);
+
+            modelBuilder.Entity<PitchModel>()
+                .Property(p => p.Name)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            modelBuilder.Entity<PitchModel>()
+                .Property(p => p.Status)
+                .IsRequired()
+                .HasConversion(
+                    v => v.ToString(), // Convert Enum to string when saving to DB
+                    v => (PitchStatus)Enum.Parse(typeof(PitchStatus), v) // Convert string back to Enum when reading from DB
+                );
+
+            modelBuilder.Entity<PitchModel>()
+                .Property(p => p.CreateAt)
+                .IsRequired()
+                .HasDefaultValueSql("GETUTCDATE()");
+
+            modelBuilder.Entity<PitchModel>()
+                .Property(p => p.UpdateAt)
+                .IsRequired()
+                .HasDefaultValueSql("GETUTCDATE()");
+
+            // Cấu hình quan hệ giữa Pitch và PitchType
+            modelBuilder.Entity<PitchModel>()
+                .HasOne(p => p.PitchType)
+                .WithMany(pt => pt.Pitches)
+                .HasForeignKey(p => p.IdPitchType)
+                .OnDelete(DeleteBehavior.SetNull); // Xóa sân sẽ không xóa loại sân
         }
     }
 }
