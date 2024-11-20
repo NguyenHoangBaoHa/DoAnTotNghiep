@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Backend.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
-    public class PitchController : Controller
+    [ApiController]
+    public class PitchController : ControllerBase
     {
         private readonly IPitchService _service;
 
@@ -28,23 +28,27 @@ namespace Backend.Controllers
         [Authorize(Roles = "Admin,Staff")]
         public async Task<IActionResult> GetById(int id)
         {
-            try
+            var pitch = await _service.GetPitchById(id);
+            if (pitch == null)
             {
-                var pitch = await _service.GetPitchById(id);
-                return Ok(pitch);
+                return NotFound(new { message = "Pitch not found" });
             }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
+            return Ok(pitch);
         }
 
         [HttpPost]
         [Authorize(Roles = "Admin,Staff")]
-        public async Task<IActionResult> Create([FromBody] PitchDto pitchDto)
+        public async Task<IActionResult> AddPitch(PitchDto pitchDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
+
+            // Check if the associated PitchType exists
+            var isPitchTypeValid = await _service.CheckPitchTypeExists(pitchDto.IdPitchType);
+            if (!isPitchTypeValid)
+            {
+                return BadRequest(new { message = "Invalid IdPitchType" });
+            }
 
             var createdPitch = await _service.CreatePitch(pitchDto);
             return CreatedAtAction(nameof(GetById), new { id = createdPitch.Id }, createdPitch);
@@ -52,35 +56,28 @@ namespace Backend.Controllers
 
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin,Staff")]
-        public async Task<IActionResult> Update(int id, [FromBody] PitchDto pitchDto)
+        public async Task<IActionResult> UpdatePitch(int id, PitchDto pitchDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            try
+            // Check if the associated PitchType exists
+            var isPitchTypeValid = await _service.CheckPitchTypeExists(pitchDto.IdPitchType);
+            if (!isPitchTypeValid)
             {
-                var updatedPitch = await _service.UpdatePitch(id, pitchDto);
-                return Ok(updatedPitch);
+                return BadRequest(new { message = "Invalid IdPitchType" });
             }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
+
+            var updatedPitch = await _service.UpdatePitch(id, pitchDto);
+            return Ok(updatedPitch);
         }
 
         [HttpDelete("{id}")]
-        [Authorize(Roles = "Admin,Staff")]
-        public async Task<IActionResult> Delete(int id)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> DeletePitch(int id)
         {
-            try
-            {
-                await _service.DeletePitch(id);
-                return NoContent();
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
+            await _service.DeletePitch(id);
+            return NoContent();
         }
     }
 }

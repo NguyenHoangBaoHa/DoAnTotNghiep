@@ -9,5 +9,6 @@ namespace Backend.Service.Pitch
         Task<PitchDto> CreatePitch(PitchDto pitchDto);
         Task<PitchDto> UpdatePitch(int id, PitchDto pitchDto);
         Task DeletePitch(int id);
+        Task<bool> CheckPitchTypeExists(int? IdPitchType);
     }
 }

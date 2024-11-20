@@ -62,5 +62,10 @@ namespace Backend.Service.Pitch
             _unitOfWork.Pitches.Delete(pitch);
             await _unitOfWork.CompleteAsync();
         }
+
+        public async Task<bool> CheckPitchTypeExists(int IdPitchType)
+        {
+            return await _unitOfWork.PitchesType.GetPitchTypeByIdAsync(IdPitchType) != null;
+        }
     }
 }

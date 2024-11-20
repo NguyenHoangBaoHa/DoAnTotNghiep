@@ -26,15 +26,16 @@ public static class ApplicationServiceExtensions
                     builder
                         .AllowAnyHeader()
                         .AllowAnyMethod()
-                        .AllowCredentials().SetIsOriginAllowed(hosts => true);
+                        .AllowCredentials()
+                        .SetIsOriginAllowed(hosts => true);
                 });
         });
 
-        //SYSTEM
+        // SYSTEM
         services.AddSingleton(config);
         services.Configure<ApiBehaviorOptions>(options => { options.SuppressModelStateInvalidFilter = true; });
 
-        //AUTHENTICATION
+        // AUTHENTICATION
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
@@ -49,8 +50,19 @@ public static class ApplicationServiceExtensions
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]))
                 };
             });
-        
+
+        // AUTHORIZATION
+        services.AddAuthorization(options =>
+        {
+            // Policy for Admin or Staff
+            options.AddPolicy("AdminOrStaffPolicy", policy =>
+                policy.RequireRole("Admin", "Staff"));
+
+            // Policy for Admin only
+            options.AddPolicy("AdminPolicy", policy =>
+                policy.RequireRole("Admin"));
+        });
+
         return services;
     }
-    
 }
