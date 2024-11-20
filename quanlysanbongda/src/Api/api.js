@@ -79,4 +79,49 @@ const AccountAPI = {
   },
 };
 
-export { AccountAPI };
+const PitchTypeAPI = {
+  getAll: async () => {
+    try {
+      const response = await api.get('/PitchTypes');
+      return response.data;
+    }
+    catch (error) {
+      console.error('Failed to fetch pitch types:', error);
+      throw error.response ? error.response.data : new Error('Failed to fetch pitch types');
+    }
+  },
+
+  createPitchType: async (pitchTypeData) => {
+    try {
+      const response = await api.post('/PitchTypes', pitchTypeData);
+      return response.data;
+    }
+    catch (error) {
+      console.error('Failed to create pitch type:', error);
+      throw error.response ? error.response.data : new Error('Failed to create pitch type');
+    }
+  },
+
+  updatePitchType: async (id, pitchTypeData) => {
+    try {
+      const response = await api.put(`/PitchTypes/${id}`, pitchTypeData);
+      return response.data;
+    }
+    catch (error) {
+      console.error('Failed to update pitch type:', error);
+      throw error.response ? error.response.data : new Error('Failed to update pitch type');
+    }
+  },
+
+  deletePitchType: async (id) => {
+    try {
+      const response = await api.delete(`/PitchTypes/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error('Failed to delete pitch type:', error);
+      throw error.response ? error.response.data : new Error('Failed to delete pitch type');
+    }
+  }
+}
+
+export { AccountAPI, PitchTypeAPI };

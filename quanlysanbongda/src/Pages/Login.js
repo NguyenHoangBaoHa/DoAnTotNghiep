@@ -23,10 +23,10 @@ const Login = () => {
       // Điều hướng theo role
       switch (response.role) {
         case 'Admin':
-          navigate('/manage-pitches');
+          navigate('/manage-pitches-admin');
           break;
         case 'Staff':
-          navigate('/manage-bookings');
+          navigate('/manage-pitches-staff');
           break;
         case 'Customer':
           navigate('/my-bookings');

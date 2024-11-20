@@ -63,9 +63,11 @@ namespace Backend.Service.Pitch
             await _unitOfWork.CompleteAsync();
         }
 
-        public async Task<bool> CheckPitchTypeExists(int IdPitchType)
+        public async Task<bool> CheckPitchTypeExists(int? IdPitchType)
         {
-            return await _unitOfWork.PitchesType.GetPitchTypeByIdAsync(IdPitchType) != null;
+            if(!IdPitchType.HasValue) return false; // Trả về false nếu IdPitchType là null
+
+            return await _unitOfWork.PitchesType.GetPitchTypeByIdAsync(IdPitchType.Value) != null;
         }
     }
 }
