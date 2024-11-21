@@ -13,7 +13,7 @@ namespace Backend.UnitOfWork
 
         IPitchRepository Pitches { get; }
 
-        IPitchTypeRepository PitchesType { get; }
+        IPitchTypesRepository PitchesType { get; }
 
         Task<int> CompleteAsync();
     }

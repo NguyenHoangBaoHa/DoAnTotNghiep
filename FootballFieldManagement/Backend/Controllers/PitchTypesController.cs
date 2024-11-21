@@ -8,23 +8,23 @@ namespace Backend.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(Policy = "AdminOnly")]
-    public class PitchTypeController : ControllerBase
+    public class PitchTypesController : ControllerBase
     {
-        private readonly IPitchTypeService _service;
+        private readonly IPitchTypesService _service;
 
-        public PitchTypeController(IPitchTypeService service)
+        public PitchTypesController(IPitchTypesService service)
         {
             _service = service;
         }
 
-        [HttpGet]
+        [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll()
         {
             var pitchTypes = await _service.GetAllPitchTypesAsync();
             return Ok(pitchTypes);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("GetById/{id}")]
         public async Task<IActionResult> GetById(int id)
         {
             try
@@ -38,17 +38,24 @@ namespace Backend.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("Add")]
         public async Task<IActionResult> AddPitchType([FromBody] PitchTypeDto pitchTypeDto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            await _service.AddAsync(pitchTypeDto);
-            return CreatedAtAction(nameof(GetById), new { id = pitchTypeDto.Id }, pitchTypeDto);
+            try
+            {
+                await _service.AddAsync(pitchTypeDto);
+                return CreatedAtAction(nameof(GetById), new { id = pitchTypeDto.Id }, pitchTypeDto);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Conflict(new { message = ex.Message });
+            }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("Update/{id}")]
         public async Task<IActionResult> UpdatePitchType(int id, [FromBody] PitchTypeDto pitchTypeDto)
         {
             if (!ModelState.IsValid)
@@ -65,7 +72,7 @@ namespace Backend.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("Delete/{id}")]
         public async Task<IActionResult> DeletePitchType(int id)
         {
             try

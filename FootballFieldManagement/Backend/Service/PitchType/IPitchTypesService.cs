@@ -2,7 +2,7 @@
 
 namespace Backend.Service.PitchType
 {
-    public interface IPitchTypeService
+    public interface IPitchTypesService
     {
         Task<IEnumerable<PitchTypeDto>> GetAllPitchTypesAsync();
         Task<PitchTypeDto> GetPitchTypeByIdAsync(int id);

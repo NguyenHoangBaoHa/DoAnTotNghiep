@@ -17,7 +17,7 @@ namespace Backend.UnitOfWork
             Accounts = new AccountRepository(_context);
             Staffs = new StaffRepository(_context);
             Pitches = new PitchRepository(_context);
-            PitchesType = new PitchTypeRepository(_context);
+            PitchesType = new PitchTypesRepository(_context);
         }
 
         public IAccountRepository Accounts { get; private set; }
@@ -26,7 +26,7 @@ namespace Backend.UnitOfWork
 
         public IPitchRepository Pitches { get; private set; }
 
-        public IPitchTypeRepository PitchesType { get; private set; }
+        public IPitchTypesRepository PitchesType { get; private set; }
 
         public async Task<int> CompleteAsync()
         {

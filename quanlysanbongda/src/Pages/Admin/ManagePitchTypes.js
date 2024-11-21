@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import '../../Css/Admin/ManagePitchType.css';
-import { PitchTypeAPI } from '../../Api/api';
+import { PitchTypesAPI } from '../../Api/api';
 
 Modal.setAppElement('#root');
 
@@ -18,7 +18,13 @@ const ManagerPitchTypes = () => {
 
   const fetchPitchTypes = async () => {
     try {
-      const data = await PitchTypeAPI.getAll();
+      const token = localStorage.getItem('token');
+      if (!token) {
+        console.error('Token is missing');
+        return;
+      }
+
+      const data = await PitchTypesAPI.getAll();
       setPitchTypes(data);
     } catch (error) {
       console.error('Failed to fetch pitch types:', error);
@@ -44,9 +50,9 @@ const ManagerPitchTypes = () => {
     e.preventDefault();
     try {
       if (isEdit) {
-        await PitchTypeAPI.updatePitchType(form.id, form);
+        await PitchTypesAPI.updatePitchType(form.id, form);
       } else {
-        await PitchTypeAPI.createPitchType(form);
+        await PitchTypesAPI.createPitchType(form);
       }
       fetchPitchTypes();
       closeModal(); // Close the modal after saving
@@ -64,7 +70,7 @@ const ManagerPitchTypes = () => {
   const handleDelete = async (id) => {
     if (window.confirm('Bạn có chắc chắn muốn xóa loại sân này không?')) {
       try {
-        await PitchTypeAPI.deletePitchType(id);
+        await PitchTypesAPI.deletePitchType(id);
         fetchPitchTypes();
       } catch (error) {
         console.error('Failed to delete pitch type:', error);
@@ -93,65 +99,48 @@ const ManagerPitchTypes = () => {
             <tr key={pitchType.id}>
               <td>{index + 1}</td>
               <td>{pitchType.name}</td>
-              <td>{Number(pitchType.price).toLocaleString('vi-VN')}đ</td>
+              <td>{pitchType.price}</td>
               <td>{pitchType.limitPerson}</td>
               <td>
-                <button className="edit-btn" onClick={() => handleEdit(pitchType)}>
-                  Sửa
-                </button>
-                <button className="delete-btn" onClick={() => handleDelete(pitchType.id)}>
-                  Xóa
-                </button>
+                <button onClick={() => handleEdit(pitchType)}>Sửa</button>
+                <button onClick={() => handleDelete(pitchType.id)}>Xóa</button>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
 
-      {/* Modal for Adding/Editing Pitch Type */}
-      <Modal
-        isOpen={isModalOpen}
-        onRequestClose={closeModal}
-        contentLabel="Thêm/Sửa Loại Sân"
-        className="modal"
-        overlayClassName="modal-overlay"
-      >
-        <h2>{isEdit ? 'Cập nhật loại sân' : 'Thêm loại sân mới'}</h2>
+      {/* Modal */}
+      <Modal isOpen={isModalOpen} onRequestClose={closeModal}>
+        <h2>{isEdit ? 'Chỉnh sửa loại sân' : 'Thêm loại sân mới'}</h2>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
             name="name"
-            placeholder="Tên loại sân"
             value={form.name}
             onChange={handleChange}
-            required
+            placeholder="Tên loại sân"
           />
           <input
             type="number"
             name="price"
-            placeholder="Giá (đồng)"
             value={form.price}
             onChange={handleChange}
-            required
+            placeholder="Giá sân"
           />
           <input
             type="number"
             name="limitPerson"
-            placeholder="Số lượng người chơi"
             value={form.limitPerson}
             onChange={handleChange}
-            required
+            placeholder="Số người tối đa"
           />
-          <div className="modal-actions">
-            <button type="submit">{isEdit ? 'Cập nhật' : 'Lưu'}</button>
-            <button type="button" onClick={closeModal}>
-              Hủy
-            </button>
-          </div>
+          <button type="submit">{isEdit ? 'Cập nhật' : 'Thêm mới'}</button>
         </form>
+        <button onClick={closeModal}>Đóng</button>
       </Modal>
     </div>
   );
-}
+};
 
 export default ManagerPitchTypes;

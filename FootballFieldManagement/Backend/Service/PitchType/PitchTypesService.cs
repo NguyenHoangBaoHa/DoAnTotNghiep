@@ -5,12 +5,12 @@ using Backend.UnitOfWork;
 
 namespace Backend.Service.PitchType
 {
-    public class PitchTypeService : IPitchTypeService
+    public class PitchTypesService : IPitchTypesService
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public PitchTypeService(IUnitOfWork unitOfWork, IMapper mapper)
+        public PitchTypesService(IUnitOfWork unitOfWork, IMapper mapper)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
@@ -34,6 +34,12 @@ namespace Backend.Service.PitchType
 
         public async Task AddAsync(PitchTypeDto pitchTypeDto)
         {
+            var existingPitchType = await _unitOfWork.PitchesType.GetPitchTypeByNameAsync(pitchTypeDto.Name);
+            if(existingPitchType != null)
+            {
+                throw new InvalidOperationException("PitchType already exists");
+            }
+
             var pitchType = _mapper.Map<PitchTypeModel>(pitchTypeDto);
             await _unitOfWork.PitchesType.AddAsync(pitchType);
         }
@@ -41,15 +47,23 @@ namespace Backend.Service.PitchType
         public async Task UpdateAsync(int id, PitchTypeDto pitchTypeDto)
         {
             var pitchType = await _unitOfWork.PitchesType.GetPitchTypeByIdAsync(id);
-            if(pitchType != null)
+            if(pitchType == null)
             {
-                _mapper.Map(pitchTypeDto, pitchType);
-                await _unitOfWork.PitchesType.UpdateAsync(pitchType);
+                throw new KeyNotFoundException("PitchType not found");
             }
+
+            _mapper.Map(pitchTypeDto, pitchType);
+            await _unitOfWork.PitchesType.UpdateAsync(pitchType);
         }
 
         public async Task DeleteAsync(int id)
         {
+            var pitchType = await _unitOfWork.PitchesType.GetPitchTypeByIdAsync(id);
+            if(pitchType == null)
+            {
+                throw new KeyNotFoundException("PitchType not found");
+            }
+
             await _unitOfWork.PitchesType.DeleteAsync(id);
         }
     }

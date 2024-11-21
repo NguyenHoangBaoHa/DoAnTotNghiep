@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Repository.PitchType
 {
-    public class PitchTypeRepository : IPitchTypeRepository
+    public class PitchTypesRepository : IPitchTypesRepository
     {
         private readonly ApplicationDbContext _context;
 
-        public PitchTypeRepository(ApplicationDbContext context)
+        public PitchTypesRepository(ApplicationDbContext context)
         {
             _context = context;
         }
@@ -21,6 +21,12 @@ namespace Backend.Repository.PitchType
         public async Task<PitchTypeModel> GetPitchTypeByIdAsync(int id)
         {
             return await _context.PitchesType.FindAsync(id);
+        }
+
+        public async Task<PitchTypeModel> GetPitchTypeByNameAsync(string name)
+        {
+            return await _context.PitchesType
+                .FirstOrDefaultAsync(pt => pt.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
         }
 
         public async Task AddAsync(PitchTypeModel pitchType)
