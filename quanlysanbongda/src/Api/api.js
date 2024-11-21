@@ -4,7 +4,8 @@ const api = axios.create({
   baseURL: 'https://localhost:8001/api', // Ensure the correct backend URL
   headers: {
     'Content-Type': 'application/json',
-  },
+    //Authorization: `Bearer ${localStorage.getItem('token')}`
+  }
 });
 
 // Interceptor to automatically add the token to headers if available
@@ -82,7 +83,17 @@ const AccountAPI = {
 const PitchTypeAPI = {
   getAll: async () => {
     try {
-      const response = await api.get('/PitchTypes');
+      const response = await api.get('/PitchType', {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      })
+        .then(response => {
+          console.log(response.data);
+        })
+        .catch(error => {
+          console.log('Error fetching pitch types: ', error);
+        });
       return response.data;
     }
     catch (error) {
@@ -93,7 +104,7 @@ const PitchTypeAPI = {
 
   createPitchType: async (pitchTypeData) => {
     try {
-      const response = await api.post('/PitchTypes', pitchTypeData);
+      const response = await api.post('/PitchType', pitchTypeData);
       return response.data;
     }
     catch (error) {
@@ -104,7 +115,7 @@ const PitchTypeAPI = {
 
   updatePitchType: async (id, pitchTypeData) => {
     try {
-      const response = await api.put(`/PitchTypes/${id}`, pitchTypeData);
+      const response = await api.put(`/PitchType/${id}`, pitchTypeData);
       return response.data;
     }
     catch (error) {
@@ -115,13 +126,55 @@ const PitchTypeAPI = {
 
   deletePitchType: async (id) => {
     try {
-      const response = await api.delete(`/PitchTypes/${id}`);
+      const response = await api.delete(`/PitchType/${id}`);
       return response.data;
     } catch (error) {
       console.error('Failed to delete pitch type:', error);
       throw error.response ? error.response.data : new Error('Failed to delete pitch type');
     }
   }
+};
+
+const PitchAPI = {
+  getAll: async () => {
+    try {
+      const response = await api.get('/Pitches');
+      return response.data;
+    } catch (error) {
+      console.error('Failed to fetch pitches:', error);
+      throw error.response ? error.response.data : new Error('Failed to fetch pitches');
+    }
+  },
+
+  createPitch: async (pitchData) => {
+    try {
+      const response = await api.post('/Pitches', pitchData);
+      return response.data;
+    } catch (error) {
+      console.error('Failed to create pitch:', error);
+      throw error.response ? error.response.data : new Error('Failed to create pitch');
+    }
+  },
+
+  updatePitch: async (id, pitchData) => {
+    try {
+      const response = await api.put(`/Pitches/${id}`, pitchData);
+      return response.data;
+    } catch (error) {
+      console.error('Failed to update pitch:', error);
+      throw error.response ? error.response.data : new Error('Failed to update pitch');
+    }
+  },
+
+  deletePitch: async (id) => {
+    try {
+      const response = await api.delete(`/Pitches/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error('Failed to delete pitch:', error);
+      throw error.response ? error.response.data : new Error('Failed to delete pitch');
+    }
+  },
 }
 
-export { AccountAPI, PitchTypeAPI };
+export { AccountAPI, PitchTypeAPI, PitchAPI };

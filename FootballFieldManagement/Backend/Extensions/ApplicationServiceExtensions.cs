@@ -27,8 +27,14 @@ public static class ApplicationServiceExtensions
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                         .AllowCredentials()
+                        //.WithOrigins("http:localhost:3000");
                         .SetIsOriginAllowed(hosts => true);
                 });
+        });
+
+        services.AddAuthorization(options =>
+        {
+            options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
         });
 
         // SYSTEM
@@ -47,7 +53,8 @@ public static class ApplicationServiceExtensions
                     ValidateIssuerSigningKey = true,
                     ValidIssuer = config["Jwt:Issuer"],
                     ValidAudience = config["Jwt:Issuer"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"])),
+                    RoleClaimType = "typ"
                 };
             });
 

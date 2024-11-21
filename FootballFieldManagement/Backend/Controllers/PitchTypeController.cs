@@ -7,7 +7,7 @@ namespace Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")] // Toàn bộ controller này chỉ cho phép Admin truy cập
+    [Authorize(Policy = "AdminOnly")]
     public class PitchTypeController : ControllerBase
     {
         private readonly IPitchTypeService _service;

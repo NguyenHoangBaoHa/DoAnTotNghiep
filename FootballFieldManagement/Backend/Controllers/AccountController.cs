@@ -34,7 +34,12 @@ namespace Backend.Controllers
             if (string.IsNullOrEmpty(loginModel.Token))
                 return Unauthorized("Sai email hoặc mật khẩu.");
 
-            return Ok(loginModel);
+            return Ok(new
+            {
+                Username = loginModel.Username,
+                Token = loginModel.Token,
+                Role = loginModel.Role
+            });
         }
 
         // Tạo tài khoản Staff (chỉ dành cho Admin)

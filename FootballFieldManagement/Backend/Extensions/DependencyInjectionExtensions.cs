@@ -1,4 +1,4 @@
-using Backend.Helpers;
+﻿using Backend.Helpers;
 using Backend.Repository.Account;
 using Backend.Repository.Pitch;
 using Backend.Repository.Staff;
@@ -14,8 +14,10 @@ public static class DependencyInjectionExtensions
     public static IServiceCollection AddDependencyInjectionExtensions(this IServiceCollection services,
         IConfiguration config)
     {
-        services.AddAutoMapper(typeof(Program));
-        services.AddScoped<ITokenService, TokenService>();
+        // Đăng ký AutoMapper
+        services.AddAutoMapper(typeof(Program)); // Hoặc bạn có thể chỉ định Assembly chứa Profile nếu có
+
+        // Đăng ký các dịch vụ
         services.AddScoped<ITokenService, TokenService>();
         services.AddScoped<IUnitOfWork, UnitOfWork.UnitOfWork>();
         services.AddScoped<IAccountRepository, AccountRepository>();
@@ -24,7 +26,7 @@ public static class DependencyInjectionExtensions
         services.AddScoped<IPitchService, PitchService>();
         services.AddScoped<IAccountService, AccountService>();
         services.AddScoped<IStaffService, StaffService>();
-        
+
         return services;
     }
 }
