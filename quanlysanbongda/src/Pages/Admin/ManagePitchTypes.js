@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
+import { useNavigate } from 'react-router-dom';
 import '../../Css/Admin/ManagePitchType.css';
 import { PitchTypesAPI } from '../../Api/api';
 
@@ -10,24 +11,43 @@ const ManagerPitchTypes = () => {
   const [form, setForm] = useState({ id: null, name: '', price: '', limitPerson: '' });
   const [isEdit, setIsEdit] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [loading, setLoading] = useState(true); // Thêm trạng thái loading
+  const [error, setError] = useState(null); // Thêm trạng thái lỗi
+
+  const navigate = useNavigate();
+  const [role, setRole] = useState(null);
+
+  // Kiểm tra quyền truy cập
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    const storedRole = localStorage.getItem('role');
+    setRole(storedRole);
+
+    if (!token || storedRole !== 'Admin') {
+      alert('Bạn không có quyền truy cập trang này.');
+      navigate('/unauthorized'); // Điều hướng đến trang lỗi hoặc đăng nhập
+    }
+  }, [navigate]);
 
   // Fetch all pitch types on component mount
   useEffect(() => {
-    fetchPitchTypes();
-  }, []);
+    if (role === 'Admin') {
+      fetchPitchTypes();
+    }
+  }, [role]);
 
   const fetchPitchTypes = async () => {
     try {
-      const token = localStorage.getItem('token');
-      if (!token) {
-        console.error('Token is missing');
-        return;
-      }
-
+      setLoading(true);  // Bắt đầu loading
+      setError(null);  // Xóa lỗi trước khi fetch
       const data = await PitchTypesAPI.getAll();
       setPitchTypes(data);
+      console.log(data);
     } catch (error) {
+      setError('Không thể tải danh sách loại sân.'); // Cập nhật lỗi
       console.error('Failed to fetch pitch types:', error);
+    } finally {
+      setLoading(false); // Kết thúc loading
     }
   };
 
@@ -58,6 +78,7 @@ const ManagerPitchTypes = () => {
       closeModal(); // Close the modal after saving
     } catch (error) {
       console.error('Failed to save pitch type:', error);
+      alert('Không thể lưu loại sân.');
     }
   };
 
@@ -74,9 +95,14 @@ const ManagerPitchTypes = () => {
         fetchPitchTypes();
       } catch (error) {
         console.error('Failed to delete pitch type:', error);
+        alert('Không thể xóa loại sân.');
       }
     }
   };
+
+  if (role !== 'Admin') {
+    return null; // Không render gì nếu không phải Admin
+  }
 
   return (
     <div className="pitch-type-management">
@@ -84,6 +110,13 @@ const ManagerPitchTypes = () => {
       <button className="add-btn" onClick={openModal}>
         Thêm mới
       </button>
+
+      {loading && <div>Đang tải...</div>} {/* Hiển thị khi đang tải */}
+      {error && <div className="error">{error}</div>} {/* Hiển thị lỗi nếu có */}
+      {pitchTypes.length === 0 && !loading && !error && (
+        <div>Không có loại sân nào.</div> // Hiển thị khi không có dữ liệu
+      )}
+
       <table className="pitch-type-table">
         <thead>
           <tr>
@@ -120,6 +153,7 @@ const ManagerPitchTypes = () => {
             value={form.name}
             onChange={handleChange}
             placeholder="Tên loại sân"
+            required
           />
           <input
             type="number"
@@ -127,6 +161,7 @@ const ManagerPitchTypes = () => {
             value={form.price}
             onChange={handleChange}
             placeholder="Giá sân"
+            required
           />
           <input
             type="number"
@@ -134,6 +169,7 @@ const ManagerPitchTypes = () => {
             value={form.limitPerson}
             onChange={handleChange}
             placeholder="Số người tối đa"
+            required
           />
           <button type="submit">{isEdit ? 'Cập nhật' : 'Thêm mới'}</button>
         </form>

@@ -1,4 +1,4 @@
-using System.Text;
+﻿using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +12,7 @@ public static class ApplicationServiceExtensions
     public static IServiceCollection AddApplicationServiceExtensions(this IServiceCollection services,
         IConfiguration config)
     {
+        // Kết nối cơ sở dữ liệu
         services.AddDbContext<ApplicationDbContext>(opt =>
         {
             opt.UseSqlServer(config.GetConnectionString("DefaultConnection"));
@@ -27,14 +28,20 @@ public static class ApplicationServiceExtensions
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                         .AllowCredentials()
-                        //.WithOrigins("http:localhost:3000");
                         .SetIsOriginAllowed(hosts => true);
                 });
         });
 
+        // AUTHORIZATION
         services.AddAuthorization(options =>
         {
-            options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+            // Chính sách chỉ dành cho Admin
+            options.AddPolicy("AdminOnly", policy =>
+                policy.RequireRole("Admin")); // "Admin" phải trùng với giá trị role trong token
+
+            // Chính sách cho cả Admin và Staff
+            options.AddPolicy("AdminOrStaffPolicy", policy =>
+                policy.RequireRole("Admin", "Staff"));
         });
 
         // SYSTEM
@@ -47,28 +54,16 @@ public static class ApplicationServiceExtensions
             {
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = config["Jwt:Issuer"],
-                    ValidAudience = config["Jwt:Issuer"],
+                    ValidateIssuer = true, // Xác thực issuer
+                    ValidateAudience = true, // Xác thực audience
+                    ValidateLifetime = true, // Xác thực thời gian sống của token
+                    ValidateIssuerSigningKey = true, // Xác thực khóa ký
+                    ValidIssuer = config["Jwt:Issuer"], // Issuer hợp lệ
+                    ValidAudience = config["Jwt:Issuer"], // Audience hợp lệ
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"])),
-                    RoleClaimType = "typ"
+                    RoleClaimType = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role" // Xác định nơi chứa role
                 };
             });
-
-        // AUTHORIZATION
-        services.AddAuthorization(options =>
-        {
-            // Policy for Admin or Staff
-            options.AddPolicy("AdminOrStaffPolicy", policy =>
-                policy.RequireRole("Admin", "Staff"));
-
-            // Policy for Admin only
-            options.AddPolicy("AdminPolicy", policy =>
-                policy.RequireRole("Admin"));
-        });
 
         return services;
     }

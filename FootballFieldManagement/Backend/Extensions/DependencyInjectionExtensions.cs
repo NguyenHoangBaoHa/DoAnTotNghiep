@@ -1,9 +1,11 @@
 ﻿using Backend.Helpers;
 using Backend.Repository.Account;
 using Backend.Repository.Pitch;
+using Backend.Repository.PitchType;
 using Backend.Repository.Staff;
 using Backend.Service.Account;
 using Backend.Service.Pitch;
+using Backend.Service.PitchType;
 using Backend.Service.Staff;
 using Backend.UnitOfWork;
 
@@ -23,7 +25,9 @@ public static class DependencyInjectionExtensions
         services.AddScoped<IAccountRepository, AccountRepository>();
         services.AddScoped<IStaffRepository, StaffRepository>();
         services.AddScoped<IPitchRepository, PitchRepository>();
+        services.AddScoped<IPitchTypesRepository, PitchTypesRepository>();
         services.AddScoped<IPitchService, PitchService>();
+        services.AddScoped<IPitchTypesService, PitchTypesService>();
         services.AddScoped<IAccountService, AccountService>();
         services.AddScoped<IStaffService, StaffService>();
 
