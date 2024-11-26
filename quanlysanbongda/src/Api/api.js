@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://localhost:8001/', // Đảm bảo URL đúng
+  baseURL: 'https://localhost:8001/api', // Đảm bảo URL đúng
   headers: {
     'Content-Type': 'application/json',
   },
@@ -35,7 +35,7 @@ const isAdmin = () => {
 const AccountAPI = {
   login: async (email, password) => {
     try {
-      const response = await api.post('api/Account/login', { email, password });
+      const response = await api.post('/Account/login', { email, password });
       const { token, role, username } = response.data;
 
       // Lưu thông tin vào localStorage
@@ -52,7 +52,7 @@ const AccountAPI = {
 
   createStaff: async (staffData) => {
     try {
-      const response = await api.post('api/Account/create-staff', staffData);
+      const response = await api.post('/Account/create-staff', staffData);
       return response.data;
     } catch (error) {
       console.error('Failed to create staff:', error);
@@ -62,7 +62,7 @@ const AccountAPI = {
 
   registerCustomer: async (customerData) => {
     try {
-      const response = await api.post('api/Account/register-customer', customerData);
+      const response = await api.post('/Account/register-customer', customerData);
       return response.data;
     } catch (error) {
       console.error('Failed to register customer:', error);
@@ -85,7 +85,7 @@ const PitchTypesAPI = {
         throw new Error("You do not have permission to view this data.");
       }
 
-      const response = await api.get('api/PitchTypes/GetAll', {
+      const response = await api.get('/PitchTypes/GetAll', {
         headers: { Authorization: `Bearer ${token}` }
       });
 
@@ -104,7 +104,7 @@ const PitchTypesAPI = {
     try {
       if (!isAdmin()) throw new Error('You do not have permission to create a pitch type.');
 
-      const response = await api.post('api/PitchTypes/Add', pitchTypeData);
+      const response = await api.post('/PitchTypes/Add', pitchTypeData);
       return response.data;
     } catch (error) {
       console.error('Failed to create pitch type:', error);
@@ -116,7 +116,7 @@ const PitchTypesAPI = {
     try {
       if (!isAdmin()) throw new Error('You do not have permission to update this pitch type.');
 
-      const response = await api.put(`api/PitchTypes/Update/${id}`, pitchTypeData);
+      const response = await api.put(`/PitchTypes/Update/${id}`, pitchTypeData);
       return response.data;
     } catch (error) {
       console.error('Failed to update pitch type:', error);
@@ -128,7 +128,7 @@ const PitchTypesAPI = {
     try {
       if (!isAdmin()) throw new Error('You do not have permission to delete this pitch type.');
 
-      const response = await api.delete(`api/PitchTypes/Delete/${id}`);
+      const response = await api.delete(`/PitchTypes/Delete/${id}`);
       return response.data;
     } catch (error) {
       console.error('Failed to delete pitch type:', error);
@@ -140,7 +140,7 @@ const PitchTypesAPI = {
 const PitchAPI = {
   getAll: async () => {
     try {
-      const response = await api.get('api/Pitches');
+      const response = await api.get('/Pitches');
       return response.data;
     } catch (error) {
       console.error('Failed to fetch pitches:', error);
@@ -150,7 +150,7 @@ const PitchAPI = {
 
   createPitch: async (pitchData) => {
     try {
-      const response = await api.post('api/Pitches', pitchData);
+      const response = await api.post('/Pitches', pitchData);
       return response.data;
     } catch (error) {
       console.error('Failed to create pitch:', error);
@@ -160,7 +160,7 @@ const PitchAPI = {
 
   updatePitch: async (id, pitchData) => {
     try {
-      const response = await api.put(`api/Pitches/${id}`, pitchData);
+      const response = await api.put(`/Pitches/${id}`, pitchData);
       return response.data;
     } catch (error) {
       console.error('Failed to update pitch:', error);
@@ -170,7 +170,7 @@ const PitchAPI = {
 
   deletePitch: async (id) => {
     try {
-      const response = await api.delete(`api/Pitches/${id}`);
+      const response = await api.delete(`/Pitches/${id}`);
       return response.data;
     } catch (error) {
       console.error('Failed to delete pitch:', error);

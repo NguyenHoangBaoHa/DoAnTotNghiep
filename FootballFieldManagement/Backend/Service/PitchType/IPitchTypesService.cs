@@ -6,7 +6,7 @@ namespace Backend.Service.PitchType
     {
         Task<IEnumerable<PitchTypeDto>> GetAllPitchTypesAsync();
         Task<PitchTypeDto> GetPitchTypeByIdAsync(int id);
-        Task<int> AddAsync(PitchTypeDto pitchTypeDto);
+        Task AddAsync(PitchTypeDto pitchTypeDto);
         Task UpdateAsync(int id, PitchTypeDto pitchTypeDto);
         Task DeleteAsync(int id);
     }

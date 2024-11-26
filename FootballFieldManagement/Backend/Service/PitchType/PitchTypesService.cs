@@ -32,28 +32,17 @@ namespace Backend.Service.PitchType
             return _mapper.Map<PitchTypeDto>(pitchType);
         }
 
-        public async Task<int> AddAsync(PitchTypeDto pitchTypeDto)
+        public async Task AddAsync(PitchTypeDto pitchTypeDto)
         {
-            if (string.IsNullOrWhiteSpace(pitchTypeDto.Name))
-            {
-                throw new ArgumentException("PitchType name cannot be empty");
-            }
-
-            // Chuẩn hóa chuỗi trước khi so sánh (ví dụ: chuyển về chữ thường)
-            var normalizedName = pitchTypeDto.Name.Trim().ToLower();
-
-            // Kiểm tra trùng lặp
-            var existingPitchType = await _unitOfWork.PitchesType.GetPitchTypeByNameAsync(normalizedName);
-            if (existingPitchType != null)
+            var existingPitchType = await _unitOfWork.PitchesType.GetPitchTypeByNameAsync(pitchTypeDto.Name);
+            if(existingPitchType != null)
             {
                 throw new InvalidOperationException("PitchType already exists");
             }
 
             var pitchType = _mapper.Map<PitchTypeModel>(pitchTypeDto);
-            var newId = await _unitOfWork.PitchesType.AddAsync(pitchType); // Chuyển đổi để nhận Id từ Repository
-            return newId;  // Trả về Id của loại sân mới được thêm
+            await _unitOfWork.PitchesType.AddAsync(pitchType);
         }
-
 
         public async Task UpdateAsync(int id, PitchTypeDto pitchTypeDto)
         {
