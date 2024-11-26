@@ -42,8 +42,7 @@
               "RelativeToolTip": "Backend\\Extensions\\ApplicationServiceExtensions.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAgwEYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-24T13:10:03.772Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-24T13:10:03.772Z"
             },
             {
               "$type": "Document",
@@ -53,7 +52,7 @@
               "RelativeDocumentMoniker": "Backend\\Controllers\\PitchTypesController.cs",
               "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Controllers\\PitchTypesController.cs",
               "RelativeToolTip": "Backend\\Controllers\\PitchTypesController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAQwCgAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBUAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-24T13:08:34.965Z",
               "EditorCaption": ""
@@ -68,8 +67,7 @@
               "RelativeToolTip": "Backend\\Repository\\PitchType\\PitchTypesRepository.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAgwDQAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-24T13:07:43.487Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-24T13:07:43.487Z"
             },
             {
               "$type": "Document",
@@ -81,8 +79,7 @@
               "RelativeToolTip": "Backend\\Service\\PitchType\\PitchTypesService.cs",
               "ViewState": "AgIAACAAAAAAAAAAAAAwwEQAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-24T13:01:54.12Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-24T13:01:54.12Z"
             }
           ]
         }
