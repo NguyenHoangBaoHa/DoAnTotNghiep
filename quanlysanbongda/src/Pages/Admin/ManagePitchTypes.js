@@ -132,7 +132,7 @@ const ManagerPitchTypes = () => {
             <tr key={pitchType.id}>
               <td>{index + 1}</td>
               <td>{pitchType.name}</td>
-              <td>{pitchType.price}</td>
+              <td>{pitchType.price} đồng</td>
               <td>{pitchType.limitPerson}</td>
               <td>
                 <button onClick={() => handleEdit(pitchType)}>Sửa</button>
@@ -143,8 +143,12 @@ const ManagerPitchTypes = () => {
         </tbody>
       </table>
 
-      {/* Modal */}
-      <Modal isOpen={isModalOpen} onRequestClose={closeModal}>
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={closeModal}
+        className="Modal__Content"
+        overlayClassName="Modal__Overlay"
+      >
         <h2>{isEdit ? 'Chỉnh sửa loại sân' : 'Thêm loại sân mới'}</h2>
         <form onSubmit={handleSubmit}>
           <input
@@ -171,9 +175,11 @@ const ManagerPitchTypes = () => {
             placeholder="Số người tối đa"
             required
           />
-          <button type="submit">{isEdit ? 'Cập nhật' : 'Thêm mới'}</button>
+          <div className="button-row">
+            <button type="submit">{isEdit ? 'Cập nhật' : 'Thêm mới'}</button>
+            <button type="button" onClick={closeModal}>Đóng</button>
+          </div>
         </form>
-        <button onClick={closeModal}>Đóng</button>
       </Modal>
     </div>
   );

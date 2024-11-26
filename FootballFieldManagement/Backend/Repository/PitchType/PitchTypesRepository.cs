@@ -26,13 +26,14 @@ namespace Backend.Repository.PitchType
         public async Task<PitchTypeModel> GetPitchTypeByNameAsync(string name)
         {
             return await _context.PitchesType
-                .FirstOrDefaultAsync(pt => pt.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+                .FirstOrDefaultAsync(pt => pt.Name.ToLower() == name.ToLower());
         }
 
-        public async Task AddAsync(PitchTypeModel pitchType)
+        public async Task<int> AddAsync(PitchTypeModel pitchType)
         {
             await _context.PitchesType.AddAsync(pitchType);
             await _context.SaveChangesAsync();
+            return pitchType.Id;
         }
 
         public async Task UpdateAsync(PitchTypeModel pitchType)

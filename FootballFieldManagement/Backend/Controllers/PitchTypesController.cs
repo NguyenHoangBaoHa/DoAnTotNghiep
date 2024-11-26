@@ -48,20 +48,8 @@ namespace Backend.Controllers
         [HttpGet("GetById/{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            try
-            {
-                var pitchType = await _service.GetPitchTypeByIdAsync(id);
-                if (pitchType == null)
-                {
-                    return NotFound(new { message = $"Pitch type with ID {id} not found." });
-                }
-                return Ok(pitchType);
-            }
-            catch (Exception ex)
-            {
-                // Ghi log nếu cần thiết
-                return StatusCode(500, new { message = "An error occurred while fetching pitch type.", details = ex.Message });
-            }
+            var pitchType = await _service.GetPitchTypeByIdAsync(id);
+            return Ok(pitchType);
         }
 
         /// <summary>
@@ -72,23 +60,18 @@ namespace Backend.Controllers
         [HttpPost("Add")]
         public async Task<IActionResult> AddPitchType([FromBody] PitchTypeDto pitchTypeDto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(new { message = "Invalid model state.", errors = ModelState.Values.SelectMany(v => v.Errors) });
-            }
-
             try
             {
-                await _service.AddAsync(pitchTypeDto);
-                return CreatedAtAction(nameof(GetById), new { id = pitchTypeDto.Id }, pitchTypeDto);
+                var newId = await _service.AddAsync(pitchTypeDto);
+                return CreatedAtAction(nameof(GetById), new {id = newId}, pitchTypeDto);
             }
-            catch (InvalidOperationException ex)
+            catch(InvalidOperationException ex)
             {
                 return Conflict(new { message = ex.Message });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "An error occurred while adding pitch type.", details = ex.Message });
+                return StatusCode(500, new { message = ex.Message });
             }
         }
 
