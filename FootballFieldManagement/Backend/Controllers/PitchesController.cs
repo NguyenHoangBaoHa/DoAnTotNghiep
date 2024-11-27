@@ -8,11 +8,11 @@ namespace Backend.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(Policy = "AdminOrStaffPolicy")] // Sử dụng Policy để rõ ràng
-    public class PitchController : ControllerBase
+    public class PitchesController : ControllerBase
     {
         private readonly IPitchService _service;
 
-        public PitchController(IPitchService service)
+        public PitchesController(IPitchService service)
         {
             _service = service;
         }
@@ -24,6 +24,10 @@ namespace Backend.Controllers
             try
             {
                 var pitches = await _service.GetAllPitches();
+                if(pitches == null || !pitches.Any())
+                {
+                    return NotFound(new { message = "No pitches found." });
+                }
                 return Ok(pitches);
             }
             catch (Exception ex)

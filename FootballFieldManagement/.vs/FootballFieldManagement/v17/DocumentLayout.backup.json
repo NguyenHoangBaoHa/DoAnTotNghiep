@@ -3,28 +3,8 @@
   "WorkspaceRootPath": "E:\\Demo\\1\\FootballFieldManagement\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\mapper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\mapper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\entities\\pitch\\dto\\pitchdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\entities\\pitch\\dto\\pitchdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\entities\\pitch\\model\\pitchmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\entities\\pitch\\model\\pitchmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\controllers\\pitchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\controllers\\pitchcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\controllers\\pitchtypescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\controllers\\pitchtypescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\extensions\\applicationserviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\extensions\\applicationserviceextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\controllers\\pitchescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\controllers\\pitchescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -43,77 +23,12 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MappingProfile.cs",
-              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Mapper\\MappingProfile.cs",
-              "RelativeDocumentMoniker": "Backend\\Mapper\\MappingProfile.cs",
-              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Mapper\\MappingProfile.cs",
-              "RelativeToolTip": "Backend\\Mapper\\MappingProfile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAACBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T14:02:16.202Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PitchDto.cs",
-              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Entities\\Pitch\\Dto\\PitchDto.cs",
-              "RelativeDocumentMoniker": "Backend\\Entities\\Pitch\\Dto\\PitchDto.cs",
-              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Entities\\Pitch\\Dto\\PitchDto.cs",
-              "RelativeToolTip": "Backend\\Entities\\Pitch\\Dto\\PitchDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T14:01:05.835Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PitchModel.cs",
-              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Entities\\Pitch\\Model\\PitchModel.cs",
-              "RelativeDocumentMoniker": "Backend\\Entities\\Pitch\\Model\\PitchModel.cs",
-              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Entities\\Pitch\\Model\\PitchModel.cs",
-              "RelativeToolTip": "Backend\\Entities\\Pitch\\Model\\PitchModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T13:55:49.747Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PitchTypesController.cs",
-              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Controllers\\PitchTypesController.cs",
-              "RelativeDocumentMoniker": "Backend\\Controllers\\PitchTypesController.cs",
-              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Controllers\\PitchTypesController.cs",
-              "RelativeToolTip": "Backend\\Controllers\\PitchTypesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T13:50:33.42Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ApplicationServiceExtensions.cs",
-              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Extensions\\ApplicationServiceExtensions.cs",
-              "RelativeDocumentMoniker": "Backend\\Extensions\\ApplicationServiceExtensions.cs",
-              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Extensions\\ApplicationServiceExtensions.cs",
-              "RelativeToolTip": "Backend\\Extensions\\ApplicationServiceExtensions.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwCoAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T13:49:59.518Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PitchController.cs",
-              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Controllers\\PitchController.cs",
-              "RelativeDocumentMoniker": "Backend\\Controllers\\PitchController.cs",
-              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Controllers\\PitchController.cs",
-              "RelativeToolTip": "Backend\\Controllers\\PitchController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Title": "PitchesController.cs",
+              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Controllers\\PitchesController.cs",
+              "RelativeDocumentMoniker": "Backend\\Controllers\\PitchesController.cs",
+              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Controllers\\PitchesController.cs",
+              "RelativeToolTip": "Backend\\Controllers\\PitchesController.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAwwBwAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-27T13:44:07.931Z",
               "EditorCaption": ""

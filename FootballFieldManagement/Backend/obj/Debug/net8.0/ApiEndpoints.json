@@ -58,9 +58,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Backend.Controllers.PitchController",
+    "ContainingType": "Backend.Controllers.PitchesController",
     "Method": "GetAll",
-    "RelativePath": "api/Pitch",
+    "RelativePath": "api/Pitches",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -68,9 +68,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Backend.Controllers.PitchController",
+    "ContainingType": "Backend.Controllers.PitchesController",
     "Method": "AddPitch",
-    "RelativePath": "api/Pitch",
+    "RelativePath": "api/Pitches",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -84,9 +84,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Backend.Controllers.PitchController",
+    "ContainingType": "Backend.Controllers.PitchesController",
     "Method": "GetById",
-    "RelativePath": "api/Pitch/{id}",
+    "RelativePath": "api/Pitches/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -100,9 +100,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Backend.Controllers.PitchController",
+    "ContainingType": "Backend.Controllers.PitchesController",
     "Method": "UpdatePitch",
-    "RelativePath": "api/Pitch/{id}",
+    "RelativePath": "api/Pitches/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -121,9 +121,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Backend.Controllers.PitchController",
+    "ContainingType": "Backend.Controllers.PitchesController",
     "Method": "DeletePitch",
-    "RelativePath": "api/Pitch/{id}",
+    "RelativePath": "api/Pitches/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
