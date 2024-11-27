@@ -27,21 +27,33 @@ namespace Backend.Repository.Pitch
         public async Task AddAsync(PitchModel pitch)
         {
             await _context.Pitches.AddAsync(pitch);
+            await _context.SaveChangesAsync();
         }
 
-        public void Update(PitchModel pitch)
+        public async Task UpdateAsync(PitchModel pitch)
         {
             _context.Pitches.Update(pitch);
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(PitchModel pitch)
+        public async Task DeleteAsync(PitchModel pitch)
         {
             _context.Pitches.Remove(pitch);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<bool> ExistsAsync(int id)
         {
             return await _context.Pitches.AnyAsync(p => p.Id == id);
+        }
+
+        public async Task<IEnumerable<PitchModel>> GetPagedAsync(int pageNumber, int pageSize)
+        {
+            return await _context.Pitches
+                                 .Include(p => p.PitchType)
+                                 .Skip((pageNumber - 1) * pageSize)
+                                 .Take(pageSize)
+                                 .ToListAsync();
         }
     }
 }

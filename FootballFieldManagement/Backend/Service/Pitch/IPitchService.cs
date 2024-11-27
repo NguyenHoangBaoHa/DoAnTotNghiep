@@ -10,5 +10,6 @@ namespace Backend.Service.Pitch
         Task<PitchDto> UpdatePitch(int id, PitchDto pitchDto);
         Task DeletePitch(int id);
         Task<bool> CheckPitchTypeExists(int? IdPitchType);
+        Task<IEnumerable<PitchDto>> GetPagedPitchesAsync(int pageNumber, int pageSize);
     }
 }

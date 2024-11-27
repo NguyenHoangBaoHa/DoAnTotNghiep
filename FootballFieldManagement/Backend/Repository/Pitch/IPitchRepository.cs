@@ -7,8 +7,9 @@ namespace Backend.Repository.Pitch
         Task<IEnumerable<PitchModel>> GetAllAsync();
         Task<PitchModel> GetByIdAsync(int id);
         Task AddAsync(PitchModel pitch);
-        void Update(PitchModel pitch);
-        void Delete(PitchModel pitch);
+        Task UpdateAsync(PitchModel pitch);
+        Task DeleteAsync(PitchModel pitch);
         Task<bool> ExistsAsync(int id);
+        Task<IEnumerable<PitchModel>> GetPagedAsync(int pageNumber, int pageSize);
     }
 }

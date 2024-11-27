@@ -33,6 +33,11 @@ namespace Backend.Service.Pitch
 
         public async Task<PitchDto> CreatePitch(PitchDto pitchDto)
         {
+            if(!await CheckPitchTypeExists(pitchDto.IdPitchType))
+            {
+                throw new ArgumentException("Invalid PitchType ID");
+            }
+
             var pitchModel = _mapper.Map<PitchModel>(pitchDto);
             await _unitOfWork.Pitches.AddAsync(pitchModel);
             await _unitOfWork.CompleteAsync();
@@ -44,10 +49,17 @@ namespace Backend.Service.Pitch
         {
             var existingPitch = await _unitOfWork.Pitches.GetByIdAsync(id);
             if (existingPitch == null)
+            {
                 throw new KeyNotFoundException("Pitch not found");
+            }
+
+            if (!await CheckPitchTypeExists(pitchDto.IdPitchType))
+            {
+                throw new ArgumentException("Invalid PitchType ID");
+            }
 
             _mapper.Map(pitchDto, existingPitch);
-            _unitOfWork.Pitches.Update(existingPitch);
+            await _unitOfWork.Pitches.UpdateAsync(existingPitch);
             await _unitOfWork.CompleteAsync();
 
             return _mapper.Map<PitchDto>(existingPitch);
@@ -59,7 +71,7 @@ namespace Backend.Service.Pitch
             if (pitch == null)
                 throw new KeyNotFoundException("Pitch not found");
 
-            _unitOfWork.Pitches.Delete(pitch);
+            await _unitOfWork.Pitches.DeleteAsync(pitch);
             await _unitOfWork.CompleteAsync();
         }
 
@@ -68,6 +80,12 @@ namespace Backend.Service.Pitch
             if(!IdPitchType.HasValue) return false; // Trả về false nếu IdPitchType là null
 
             return await _unitOfWork.PitchesType.GetPitchTypeByIdAsync(IdPitchType.Value) != null;
+        }
+
+        public async Task<IEnumerable<PitchDto>> GetPagedPitchesAsync(int pageNumber, int pageSize)
+        {
+            var pagedPitches = await _unitOfWork.Pitches.GetPagedAsync(pageNumber, pageSize);
+            return _mapper.Map<IEnumerable<PitchDto>>(pagedPitches);
         }
     }
 }
