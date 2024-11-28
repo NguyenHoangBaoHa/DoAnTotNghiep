@@ -43,7 +43,7 @@ public class AccountService : IAccountService
         var existingAccount = await _unitOfWork.Accounts.GetByEmail(createStaffDto.Email);
         if (existingAccount != null)
         {
-            Console.WriteLine("Account with this email already exists.");
+            //Console.WriteLine("Account with this email already exists.");
             throw new InvalidOperationException("Email đã tồn tại.");
         }
 
@@ -59,37 +59,31 @@ public class AccountService : IAccountService
             StartDate = createStaffDto.StartDate,
         };
 
-        try
+        await _unitOfWork.Staffs.Add(staff);
+        await _unitOfWork.CompleteAsync();
+
+        if(staff.Id == 0)
         {
-            Console.WriteLine("Saving staff to the database...");
-            await _unitOfWork.Staffs.Add(staff);
-            await _unitOfWork.CompleteAsync();
-
-            if (staff.Id == 0)
-            {
-                throw new InvalidOperationException("Failed to retrieve Staff ID after saving.");
-            }
-
-            var account = new AccountModel
-            {
-                Email = createStaffDto.Email,
-                Password = BCrypt.Net.BCrypt.HashPassword(createStaffDto.Password),
-                Role = "Staff",
-                IdStaff = staff.Id
-            };
-
-            // Lưu tài khoản
-            await _unitOfWork.Accounts.Add(account);
-            await _unitOfWork.CompleteAsync();
-            Console.WriteLine($"Account for {account.Email} saved successfully.");
-
-            return account;
+            throw new InvalidOperationException("Failed to retrieve Staff ID after saving.");
         }
-        catch (Exception ex)
+
+        // Tạo AccountModel
+        var account = new AccountModel
         {
-            Console.WriteLine($"Error in CreateStaff: {ex.Message}");
-            throw new InvalidOperationException($"Error saving staff or account: {ex.Message}");
-        }
+            Email = createStaffDto.Email,
+            Password = BCrypt.Net.BCrypt.HashPassword(createStaffDto.Password),
+            Role = "Staff",
+            IdStaff = staff.Id
+        };
+
+        // Liên kết Staff và Account
+        staff.Account = account;
+
+        // Lưu AccountModel
+        await _unitOfWork.Accounts.Add(account);
+        await _unitOfWork.CompleteAsync();
+
+        return account;
     }
 
     public async Task<AccountModel> RegisterCustomer(CustomerDto customerDto, AccountDto accountDto)

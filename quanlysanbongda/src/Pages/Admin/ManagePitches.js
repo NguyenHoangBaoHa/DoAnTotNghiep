@@ -94,37 +94,38 @@ const ManagePitches = () => {
       <button className="add-btn" onClick={openModal}>
         Thêm mới
       </button>
-
-      {loading && <div>Đang tải...</div>}
-      <table className="pitch-table">
-        <thead>
-          <tr>
-            <th>STT</th>
-            <th>Tên sân</th>
-            <th>Loại sân</th>
-            <th>Trạng thái</th>
-            <th>Hành động</th>
-          </tr>
-        </thead>
-        <tbody>
-          {pitches.map((pitch, index) => (
-            <tr key={pitch.id}>
-              <td>{index + 1}</td>
-              <td>{pitch.name}</td>
-              <td>{getPitchTypeNameById(pitch.idPitchType)}</td> {/* Hiển thị tên loại sân */}
-              <td>{pitch.status}</td>
-              <td>
-                <button onClick={() => handleEdit(pitch)}>Sửa</button>
-                <button onClick={() => handleDelete(pitch.id)}>Xóa</button>
-              </td>
+      {loading ? (
+        <div>Đang tải...</div>
+      ) : (
+        <table className="pitch-table">
+          <thead>
+            <tr>
+              <th>STT</th>
+              <th>Tên sân</th>
+              <th>Loại sân</th>
+              <th>Trạng thái</th>
+              <th>Hành động</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-
+          </thead>
+          <tbody>
+            {pitches.map((pitch, index) => (
+              <tr key={pitch.id}>
+                <td>{index + 1}</td>
+                <td>{pitch.name}</td>
+                <td>{getPitchTypeNameById(pitch.idPitchType) || "Không xác định"}</td>
+                <td>{pitch.status}</td>
+                <td>
+                  <button onClick={() => handleEdit(pitch)}>Sửa</button>
+                  <button onClick={() => handleDelete(pitch.id)}>Xóa</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
       {/* Modal */}
       <Modal isOpen={isModalOpen} onRequestClose={closeModal}>
-        <h2>{isEdit ? 'Chỉnh sửa sân' : 'Thêm sân mới'}</h2>
+        <h2>{isEdit ? "Chỉnh sửa sân" : "Thêm sân mới"}</h2>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -155,12 +156,12 @@ const ManagePitches = () => {
             <option value="Trống">Trống</option>
             <option value="Đã đặt">Đã đặt</option>
           </select>
-          <button type="submit">{isEdit ? 'Cập nhật' : 'Thêm mới'}</button>
+          <button type="submit">{isEdit ? "Cập nhật" : "Thêm mới"}</button>
         </form>
         <button onClick={closeModal}>Đóng</button>
       </Modal>
     </div>
-  );
+  );  
 };
 
 export default ManagePitches;

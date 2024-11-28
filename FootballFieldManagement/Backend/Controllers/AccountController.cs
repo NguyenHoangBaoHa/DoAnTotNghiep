@@ -55,7 +55,7 @@ namespace Backend.Controllers
             var userClaims = HttpContext.User.Claims;
 
             // Kiểm tra xem người dùng có quyền admin không
-            var roleClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Typ)?.Value;
+            var roleClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")?.Value;
             if (roleClaim != "Admin")
             {
                 return Unauthorized("You do not have permission to perform this action.");
@@ -67,7 +67,13 @@ namespace Backend.Controllers
                 var account = await _service.CreateStaff(createStaffDto);
 
                 // Trả về kết quả thành công
-                return Ok(account);
+                return Ok(new
+                {
+                    Message = "Staff created successfully.",
+                    AccountId = account.Id,
+                    Email = account.Email,
+                    Role = account.Role
+                });
             }
             catch (Exception ex)
             {
