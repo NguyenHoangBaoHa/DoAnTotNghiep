@@ -13,6 +13,7 @@ import ManagerPitchesStaff from '../src/Pages/Staff/ManagerPitchesStaff';
 import ManageBookingsStaff from '../src/Pages/Staff/ManageBookingsStaff';
 import BookingPitches from './Pages/Customer/BookingPitches';
 import Profile from './Pages/Customer/Profile';
+import { AuthProvider } from './Context/AuthContext';
 
 const ProtectedRoute = ({ role, children }) => {
   const token = localStorage.getItem("token");
@@ -26,92 +27,94 @@ const ProtectedRoute = ({ role, children }) => {
 
 const App = () => {
   return (
-    <Router>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+    <AuthProvider>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
-        {/* Admin Routes */}
-        <Route
-          path="/manage-pitches-admin"
-          element={
-            <ProtectedRoute role="Admin">
-              <ManagerPitches />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path='/manage-pitch-types-admin'
-          element={
-            <ProtectedRoute>
-              <ManagerPitchTypes />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path='/manage-bookings-admin'
-          element={
-            <ProtectedRoute>
-              <ManageBookingsAdmin />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path='/revenue-report-admin'
-          element={
-            <ProtectedRoute>
-              <RevenueReport />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path='/create-staff'
-          element={
-            <ProtectedRoute>
-              <CreateStaff />
-            </ProtectedRoute>
-          }
-        />
+          {/* Admin Routes */}
+          <Route
+            path="/manage-pitches-admin"
+            element={
+              <ProtectedRoute role="Admin">
+                <ManagerPitches />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/manage-pitch-types-admin'
+            element={
+              <ProtectedRoute>
+                <ManagerPitchTypes />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/manage-bookings-admin'
+            element={
+              <ProtectedRoute>
+                <ManageBookingsAdmin />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/revenue-report-admin'
+            element={
+              <ProtectedRoute>
+                <RevenueReport />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/create-staff'
+            element={
+              <ProtectedRoute>
+                <CreateStaff />
+              </ProtectedRoute>
+            }
+          />
 
-        {/* Staff Routes */}
-        <Route
-          path="/manage-pitches-staff"
-          element={
-            <ProtectedRoute role="Staff">
-              <ManagerPitchesStaff />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path='/manage-bookings-staff'
-          element={
-            <ProtectedRoute>
-              <ManageBookingsStaff />
-            </ProtectedRoute>
-          }
-        />
+          {/* Staff Routes */}
+          <Route
+            path="/manage-pitches-staff"
+            element={
+              <ProtectedRoute role="Staff">
+                <ManagerPitchesStaff />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/manage-bookings-staff'
+            element={
+              <ProtectedRoute>
+                <ManageBookingsStaff />
+              </ProtectedRoute>
+            }
+          />
 
-        {/* Customer Routes */}
-        <Route
-          path="/my-bookings"
-          element={
-            <ProtectedRoute role="Customer">
-              <BookingPitches />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path='/profile'
-          element={
-            <ProtectedRoute>
-              <Profile />
-            </ProtectedRoute>
-          }
-        />
-      </Routes>
-    </Router>
+          {/* Customer Routes */}
+          <Route
+            path="/my-bookings"
+            element={
+              <ProtectedRoute role="Customer">
+                <BookingPitches />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path='/profile'
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 

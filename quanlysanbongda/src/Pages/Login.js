@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AccountAPI } from '../Api/api'; // Đảm bảo rằng đường dẫn là chính xác
 import '../Css/Login.css';
+import { AuthContext } from '../Context/AuthContext';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const {login} = useContext(AuthContext);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -19,6 +21,7 @@ const Login = () => {
       localStorage.setItem('username', response.username);
       localStorage.setItem('token', response.token);
       localStorage.setItem('role', response.role);
+      login(response.role);
 
       // Điều hướng theo role
       switch (response.role) {

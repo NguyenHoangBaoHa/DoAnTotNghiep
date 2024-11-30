@@ -43,6 +43,8 @@ const AccountAPI = {
       localStorage.setItem('role', role);
       localStorage.setItem('username', username);
 
+      console.log("Username: ", username + "\nToken: ", token + "\nRole: ", role);
+
       return response.data;
     } catch (error) {
       console.error('Login failed:', error);

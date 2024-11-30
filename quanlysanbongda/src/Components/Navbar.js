@@ -1,73 +1,58 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import '../Css/Navbar.css';
+import {AuthContext} from '../Context/AuthContext';
+import "../Css/Navbar.css";
 
 const Navbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [role, setRole] = useState('');
+  const {auth, logout} = useContext(AuthContext);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    const userRole = localStorage.getItem("role");
-
-    if (token) {
-      setIsLoggedIn(true);
-      setRole(userRole);
-    } else {
-      setIsLoggedIn(false);
-      setRole("");
-    }
-  }, []);
-
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("role");
-    setIsLoggedIn(false);
-    setRole("");
-    navigate('/login')
+    logout();
+    navigate('/login');
   }
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
-          Trang Chủ
-        </Link>
-        <div className="navbar-menu">
-          {isLoggedIn ? (
-            <>
-              {/* Admin Menu */}
-              {role === "Admin" && (
-                <>
-                  <Link to="/manage-pitches-admin">Quản lý sân</Link>
-                  <Link to="/manage-pitch-types-admin">Quản lý loại sân</Link>
-                  <Link to="/manage-bookings-admin">Quản lý đặt sân</Link>
-                  <Link to="/revenue-report-admin">Báo cáo doanh thu</Link>
-                  <Link to="/create-staff">Đăng ký tài khoản nhân viên</Link>
-                </>
-              )}
+        {/* Mục chung cho tất cả người dùng */}
+        <div className="common-menu">
+          <Link to="/">Trang Chủ</Link>
+        </div>
 
-              {/* Staff Menu */}
-              {role === "Staff" && (
-                <>
-                  <Link to="/manage-pitches-staff">Quản lý sân</Link>
-                  <Link to="/manage-bookings-staff">Quản lý đặt sân</Link>
-                </>
-              )}
+        {/* Hiển thị mục theo từng role */}
+        <div className="role-menu">
+          {auth.isLoggedIn && auth.role === "Admin" && (
+            <div className="admin-menu">
+              <Link to="/manage-pitches-admin">Quản lý sân</Link>
+              <Link to="/manage-pitch-types-admin">Quản lý loại sân</Link>
+              <Link to="/manage-bookings-admin">Quản lý đặt sân</Link>
+              <Link to="/revenue-report-admin">Báo cáo doanh thu</Link>
+              <Link to="/create-staff">Đăng ký tài khoản nhân viên</Link>
+            </div>
+          )}
 
-              {/* Customer Menu */}
-              {role === "Customer" && (
-                <>
-                  <Link to="/my-bookings">Lịch sử đặt sân</Link>
-                  <Link to="/profile">Hồ sơ</Link>
-                </>
-              )}
+          {auth.isLoggedIn && auth.role === "Staff" && (
+            <div className="staff-menu">
+              <Link to="/manage-pitches-staff">Quản lý sân</Link>
+              <Link to="/manage-bookings-staff">Quản lý đặt sân</Link>
+            </div>
+          )}
 
-              <button onClick={handleLogout} className="logout-btn">
-                Đăng Xuất
-              </button>
-            </>
+          {auth.isLoggedIn && auth.role === "Customer" && (
+            <div className="customer-menu">
+              <Link to="/my-bookings">Lịch sử đặt sân</Link>
+              <Link to="/profile">Hồ sơ</Link>
+            </div>
+          )}
+        </div>
+
+        {/* Hiển thị nút Đăng Nhập/Đăng Xuất */}
+        <div className="auth-menu">
+          {auth.isLoggedIn ? (
+            <button onClick={handleLogout} className="logout-btn">
+              Đăng Xuất
+            </button>
           ) : (
             <>
               <Link to="/login">Đăng Nhập</Link>
