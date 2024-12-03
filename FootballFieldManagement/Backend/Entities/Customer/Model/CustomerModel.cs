@@ -1,4 +1,5 @@
 ﻿using Backend.Entities.Account.Model;
+using Backend.Entities.Booking.Model;
 using System.ComponentModel.DataAnnotations;
 
 namespace Backend.Entities.Customer.Model
@@ -31,5 +32,7 @@ namespace Backend.Entities.Customer.Model
 
         // Navigation property to Account
         public virtual AccountModel Account { get; set; }
+
+        public virtual ICollection<BookingModel> Bookings { get; set; }
     }
 }

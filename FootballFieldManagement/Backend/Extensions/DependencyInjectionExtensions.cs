@@ -1,9 +1,11 @@
 ﻿using Backend.Helpers;
 using Backend.Repository.Account;
+using Backend.Repository.Booking;
 using Backend.Repository.Pitch;
 using Backend.Repository.PitchType;
 using Backend.Repository.Staff;
 using Backend.Service.Account;
+using Backend.Service.Booking;
 using Backend.Service.Pitch;
 using Backend.Service.PitchType;
 using Backend.Service.Staff;
@@ -26,6 +28,8 @@ public static class DependencyInjectionExtensions
         services.AddScoped<IStaffRepository, StaffRepository>();
         services.AddScoped<IPitchRepository, PitchRepository>();
         services.AddScoped<IPitchTypesRepository, PitchTypesRepository>();
+        services.AddScoped<IBookingRepository, BookingRepository>();
+        services.AddScoped<IBookingService, BookingService>();
         services.AddScoped<IPitchService, PitchService>();
         services.AddScoped<IPitchTypesService, PitchTypesService>();
         services.AddScoped<IAccountService, AccountService>();

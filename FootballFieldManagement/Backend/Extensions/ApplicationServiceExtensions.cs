@@ -42,6 +42,9 @@ public static class ApplicationServiceExtensions
             // Chính sách cho cả Admin và Staff
             options.AddPolicy("AdminOrStaffPolicy", policy =>
                 policy.RequireRole("Admin", "Staff"));
+
+            options.AddPolicy("StaffOnly", policy =>
+                policy.RequireRole("Staff"));
         });
 
         // SYSTEM

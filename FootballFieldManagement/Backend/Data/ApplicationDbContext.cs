@@ -5,6 +5,7 @@ using Backend.Entities.Staff.Model;
 using Backend.Entities.Pitch.Model;
 using Backend.Entities.PitchType.Model;
 using Backend.Entities.Enums;
+using Backend.Entities.Booking.Model;
 
 namespace Backend.Data
 {
@@ -17,6 +18,7 @@ namespace Backend.Data
         public DbSet<CustomerModel> Customers { get; set; }
         public DbSet<PitchModel> Pitches { get; set; }
         public DbSet<PitchTypeModel> PitchesType { get; set; }
+        public DbSet<BookingModel> Bookings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -121,6 +123,39 @@ namespace Backend.Data
                 .WithMany(pt => pt.Pitches)
                 .HasForeignKey(p => p.IdPitchType)
                 .OnDelete(DeleteBehavior.SetNull); // Xóa sân sẽ không xóa loại sân
+
+            // Cấu hình bảng Booking
+            modelBuilder.Entity<BookingModel>()
+                .ToTable("Booking")
+                .HasKey(b => b.Id);
+
+            modelBuilder.Entity<BookingModel>()
+                .Property(b => b.BookingDate)
+                .IsRequired();
+
+            modelBuilder.Entity<BookingModel>()
+                .Property(b => b.HasCheckedIn)
+                .IsRequired()
+                .HasDefaultValue(false); // Mặc định chưa check-in
+
+            modelBuilder.Entity<BookingModel>()
+                .Property(b => b.IsPaid)
+                .IsRequired()
+                .HasDefaultValue(false); // Mặc định chưa thanh toán
+
+            // Thiết lập quan hệ giữa Booking và Customer
+            modelBuilder.Entity<BookingModel>()
+                .HasOne(b => b.Customer)
+                .WithMany(c => c.Bookings)
+                .HasForeignKey(b => b.IdCustomer)
+                .OnDelete(DeleteBehavior.Restrict); // Không xóa booking khi xóa customer
+
+            // Thiết lập quan hệ giữa Booking và PitchType
+            modelBuilder.Entity<BookingModel>()
+                .HasOne(b => b.PitchType)
+                .WithMany()
+                .HasForeignKey(b => b.IdPitchType)
+                .OnDelete(DeleteBehavior.Restrict); // Không xóa booking khi xóa loại sân
         }
     }
 }
