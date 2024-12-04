@@ -72,22 +72,34 @@ namespace Backend.Controllers
         [HttpPost("Add")]
         public async Task<IActionResult> AddPitchType([FromBody] PitchTypeDto pitchTypeDto)
         {
+            // Kiểm tra xem pitchTypeDto có null không
+            if (pitchTypeDto == null)
+            {
+                return BadRequest(new { message = "PitchType data is null" });
+            }
+
+            // Kiểm tra tính hợp lệ của model
             if (!ModelState.IsValid)
             {
-                return BadRequest(new { message = "Invalid model state.", errors = ModelState.Values.SelectMany(v => v.Errors) });
+                return BadRequest(new { message = "Invalid model state.", errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage) });
             }
 
             try
             {
+                // Gọi service để thêm loại sân
                 await _service.AddAsync(pitchTypeDto);
+
+                // Trả về 201 Created khi thêm thành công
                 return CreatedAtAction(nameof(GetById), new { id = pitchTypeDto.Id }, pitchTypeDto);
             }
             catch (InvalidOperationException ex)
             {
+                // Trường hợp loại sân đã tồn tại
                 return Conflict(new { message = ex.Message });
             }
             catch (Exception ex)
             {
+                // Xử lý lỗi khi thêm không thành công
                 return StatusCode(500, new { message = "An error occurred while adding pitch type.", details = ex.Message });
             }
         }

@@ -31,8 +31,16 @@ namespace Backend.Repository.PitchType
 
         public async Task AddAsync(PitchTypeModel pitchType)
         {
-            await _context.PitchesType.AddAsync(pitchType);
-            await _context.SaveChangesAsync();
+            try
+            {
+                await _context.PitchesType.AddAsync(pitchType);
+                await _context.SaveChangesAsync(); // Lưu thay đổi vào database
+            }
+            catch (Exception ex)
+            {
+                // Xử lý ngoại lệ, có thể log chi tiết hoặc thông báo lỗi cho người dùng
+                throw new Exception("An error occurred while saving the pitch type to the database.", ex);
+            }
         }
 
         public async Task UpdateAsync(PitchTypeModel pitchType)

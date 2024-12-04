@@ -11,7 +11,7 @@ const ManagerPitchTypes = () => {
   const [form, setForm] = useState({ id: null, name: '', price: '', limitPerson: '' });
   const [isEdit, setIsEdit] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [loading, setLoading] = useState(true); 
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false); // Trạng thái khi đang xử lý
   const navigate = useNavigate();
@@ -66,26 +66,51 @@ const ManagerPitchTypes = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true); // Bắt đầu quá trình gửi
+
+    // Kiểm tra các trường hợp không hợp lệ
+    if (!form.name || !form.price || !form.limitPerson) {
+      alert("Tất cả các trường đều phải được điền đầy đủ!");
+      return;
+    }
+
+    // Chuyển đổi price và limitPerson sang số
+    const price = parseFloat(form.price);
+    const limitPerson = parseInt(form.limitPerson, 10);
+
+    // Kiểm tra xem giá trị có hợp lệ không
+    if (isNaN(price) || isNaN(limitPerson)) {
+      alert("Giá hoặc số người tối đa không hợp lệ.");
+      return;
+    }
+
+    const formData = {
+      ...form,
+      price,  // Chuyển price thành số (decimal)
+      limitPerson,  // Chuyển limitPerson thành số nguyên (int)
+    };
+
+    console.log("Form data:", formData); // Kiểm tra lại dữ liệu sau khi chuyển đổi
+
     try {
       if (isEdit) {
-        await PitchTypesAPI.updatePitchType(form.id, form);
-        alert('Cập nhật loại sân thành công!');
+        await PitchTypesAPI.updatePitchType(formData.id, formData);
+        alert("Cập nhật loại sân thành công!");
       } else {
-        await PitchTypesAPI.createPitchType(form);
-        alert('Thêm loại sân mới thành công!');
+        await PitchTypesAPI.createPitchType(formData);
+        alert("Thêm loại sân mới thành công!");
       }
       fetchPitchTypes();
       closeModal();
     } catch (error) {
-      console.error('Failed to save pitch type:', error);
+      console.error("Lỗi khi lưu loại sân:", error);
       if (error.response && error.response.data) {
-        alert(error.response.data.message || 'Đã xảy ra lỗi.');
+        alert(error.response.data.message || "Đã xảy ra lỗi.");
       } else {
-        alert('Không thể lưu loại sân. Vui lòng thử lại sau.');
+        alert("Không thể lưu loại sân. Vui lòng thử lại sau.");
       }
-    } finally {
-      setIsSubmitting(false); // Kết thúc quá trình gửi
+    }
+    finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -118,8 +143,8 @@ const ManagerPitchTypes = () => {
         {isSubmitting ? 'Đang xử lý...' : 'Thêm mới'}
       </button>
 
-      {loading && <div>Đang tải...</div>} 
-      {error && <div className="error">{error}</div>} 
+      {loading && <div>Đang tải...</div>}
+      {error && <div className="error">{error}</div>}
       {pitchTypes.length === 0 && !loading && !error && (
         <div>Không có loại sân nào.</div>
       )}

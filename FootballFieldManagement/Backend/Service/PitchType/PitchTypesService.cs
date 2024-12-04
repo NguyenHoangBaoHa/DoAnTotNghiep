@@ -34,17 +34,34 @@ namespace Backend.Service.PitchType
 
         public async Task AddAsync(PitchTypeDto pitchTypeDto)
         {
-            // Kiểm tra loại sân có trùng tên hay không
-            var existingPitchType = await _unitOfWork.PitchesType.GetPitchTypeByNameAsync(pitchTypeDto.Name);
-            if (existingPitchType != null)
+            try
             {
-                throw new InvalidOperationException("PitchType already exists");
-            }
+                // Log kiểm tra xem phương thức có được gọi không
+                Console.WriteLine("AddAsync method is called.");
 
-            // Thêm loại sân mới
-            var pitchType = _mapper.Map<PitchTypeModel>(pitchTypeDto);
-            await _unitOfWork.PitchesType.AddAsync(pitchType);
-            await _unitOfWork.CompleteAsync(); // Lưu thay đổi vào database
+                // Kiểm tra loại sân có trùng tên hay không
+                var existingPitchType = await _unitOfWork.PitchesType.GetPitchTypeByNameAsync(pitchTypeDto.Name);
+                if (existingPitchType != null)
+                {
+                    throw new InvalidOperationException("PitchType already exists");
+                }
+
+                // Chuyển đổi DTO thành model để lưu vào cơ sở dữ liệu
+                var pitchType = _mapper.Map<PitchTypeModel>(pitchTypeDto);
+
+                // Thêm loại sân mới vào cơ sở dữ liệu
+                Console.WriteLine("Attempting to add pitch type.");
+                await _unitOfWork.PitchesType.AddAsync(pitchType);
+                await _unitOfWork.CompleteAsync(); // Lưu thay đổi vào database
+
+                Console.WriteLine("Pitch type added successfully.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error occurred: {ex.Message}");
+                // Xử lý lỗi khi thêm loại sân
+                throw new Exception("An error occurred while adding the pitch type.", ex);
+            }
         }
 
         public async Task UpdateAsync(int id, PitchTypeDto pitchTypeDto)

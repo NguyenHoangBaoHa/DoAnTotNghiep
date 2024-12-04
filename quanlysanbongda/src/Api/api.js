@@ -105,10 +105,14 @@ const PitchTypesAPI = {
 
       const response = await api.post('/PitchTypes/Add', pitchTypeData);
       console.log("Response: ", response);
+
+      // Kiểm tra mã trạng thái trả về và dữ liệu
       if (response.status !== 200 && response.status !== 201) {
         throw new Error('Không thể tạo loại sân.');
       }
-      return response.data; // Đảm bảo trả về dữ liệu từ API
+
+      // Trả về dữ liệu thành công
+      return response.data;
     } catch (error) {
       console.error('Lỗi khi tạo loại sân:', error);
       throw new Error(error.response?.data || error.message || 'Không thể tạo loại sân');
