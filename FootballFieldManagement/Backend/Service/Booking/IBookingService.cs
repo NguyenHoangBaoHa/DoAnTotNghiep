@@ -5,6 +5,6 @@ namespace Backend.Service.Booking
     public interface IBookingService
     {
         Task<IEnumerable<BookingDto>> GetBookingsByRoleAsync(string role);
-        Task UpdateBookingCheckInStatusAsync(int IdBooking, bool checkIn);
+        Task<bool> UpdateCheckedInStatusAsync(int bookingId, bool hasCheckedIn);
     }
 }

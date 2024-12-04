@@ -1,4 +1,5 @@
 ﻿using Backend.Data;
+using Backend.Entities.Booking.Dto;
 using Backend.Entities.Booking.Model;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,26 +14,26 @@ namespace Backend.Repository.Booking
             _context = context;
         }
 
-        public async Task<IEnumerable<BookingModel>> GetAllBookingsAssync()
-        {
-            return await _context.Bookings
-                 .Include(b => b.Customer)
-                 .Include(b => b.PitchType)
-                 .ToListAsync();
-        }
-
-        public async Task<BookingModel> GetByIdAssync(int Idbooking)
+        public async Task<List<BookingModel>> GetAllBookingsAsync()
         {
             return await _context.Bookings
                 .Include(b => b.Customer)
-                .Include(b => b.PitchType)
-                .FirstOrDefaultAsync(b => b.Id == Idbooking);
+                .Include(b => b.Pitch)
+                .ThenInclude(p => p.PitchType)
+                .ToListAsync();
         }
 
-        public async Task UpdateAssync(BookingModel booking)
+        public async Task<bool> UpdateCheckedInStatusAsync(int bookingId, bool hasCheckedIn)
         {
-            _context.Bookings.Update(booking);
+            var booking = await _context.Bookings.FindAsync(bookingId);
+            if (booking == null)
+            {
+                return false;
+            }
+
+            booking.HasCheckedIn = hasCheckedIn;
             await _context.SaveChangesAsync();
+            return true;
         }
     }
 }

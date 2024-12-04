@@ -34,14 +34,17 @@ namespace Backend.Service.PitchType
 
         public async Task AddAsync(PitchTypeDto pitchTypeDto)
         {
+            // Kiểm tra loại sân có trùng tên hay không
             var existingPitchType = await _unitOfWork.PitchesType.GetPitchTypeByNameAsync(pitchTypeDto.Name);
-            if(existingPitchType != null)
+            if (existingPitchType != null)
             {
                 throw new InvalidOperationException("PitchType already exists");
             }
 
+            // Thêm loại sân mới
             var pitchType = _mapper.Map<PitchTypeModel>(pitchTypeDto);
             await _unitOfWork.PitchesType.AddAsync(pitchType);
+            await _unitOfWork.CompleteAsync(); // Lưu thay đổi vào database
         }
 
         public async Task UpdateAsync(int id, PitchTypeDto pitchTypeDto)

@@ -11,9 +11,9 @@ const ManagerPitchTypes = () => {
   const [form, setForm] = useState({ id: null, name: '', price: '', limitPerson: '' });
   const [isEdit, setIsEdit] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [loading, setLoading] = useState(true); // Thêm trạng thái loading
-  const [error, setError] = useState(null); // Thêm trạng thái lỗi
-
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false); // Trạng thái khi đang xử lý
   const navigate = useNavigate();
   const [role, setRole] = useState(null);
 
@@ -29,7 +29,7 @@ const ManagerPitchTypes = () => {
     }
   }, [navigate]);
 
-  // Fetch all pitch types on component mount
+  // Fetch tất cả các loại sân
   useEffect(() => {
     if (role === 'Admin') {
       fetchPitchTypes();
@@ -38,16 +38,14 @@ const ManagerPitchTypes = () => {
 
   const fetchPitchTypes = async () => {
     try {
-      setLoading(true);  // Bắt đầu loading
-      setError(null);  // Xóa lỗi trước khi fetch
+      setLoading(true);
+      setError(null);
       const data = await PitchTypesAPI.getAll();
       setPitchTypes(data);
-      console.log(data);
     } catch (error) {
-      setError('Không thể tải danh sách loại sân.'); // Cập nhật lỗi
-      console.error('Failed to fetch pitch types:', error);
+      setError('Không thể tải danh sách loại sân.');
     } finally {
-      setLoading(false); // Kết thúc loading
+      setLoading(false);
     }
   };
 
@@ -68,17 +66,26 @@ const ManagerPitchTypes = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true); // Bắt đầu quá trình gửi
     try {
       if (isEdit) {
         await PitchTypesAPI.updatePitchType(form.id, form);
+        alert('Cập nhật loại sân thành công!');
       } else {
         await PitchTypesAPI.createPitchType(form);
+        alert('Thêm loại sân mới thành công!');
       }
       fetchPitchTypes();
-      closeModal(); // Close the modal after saving
+      closeModal();
     } catch (error) {
       console.error('Failed to save pitch type:', error);
-      alert('Không thể lưu loại sân.');
+      if (error.response && error.response.data) {
+        alert(error.response.data.message || 'Đã xảy ra lỗi.');
+      } else {
+        alert('Không thể lưu loại sân. Vui lòng thử lại sau.');
+      }
+    } finally {
+      setIsSubmitting(false); // Kết thúc quá trình gửi
     }
   };
 
@@ -107,14 +114,14 @@ const ManagerPitchTypes = () => {
   return (
     <div className="pitch-type-management">
       <h1>Quản Lý Loại Sân</h1>
-      <button className="add-btn" onClick={openModal}>
-        Thêm mới
+      <button className="add-btn" onClick={openModal} disabled={isSubmitting}>
+        {isSubmitting ? 'Đang xử lý...' : 'Thêm mới'}
       </button>
 
-      {loading && <div>Đang tải...</div>} {/* Hiển thị khi đang tải */}
-      {error && <div className="error">{error}</div>} {/* Hiển thị lỗi nếu có */}
+      {loading && <div>Đang tải...</div>} 
+      {error && <div className="error">{error}</div>} 
       {pitchTypes.length === 0 && !loading && !error && (
-        <div>Không có loại sân nào.</div> // Hiển thị khi không có dữ liệu
+        <div>Không có loại sân nào.</div>
       )}
 
       <table className="pitch-type-table">
@@ -171,7 +178,9 @@ const ManagerPitchTypes = () => {
             placeholder="Số người tối đa"
             required
           />
-          <button type="submit">{isEdit ? 'Cập nhật' : 'Thêm mới'}</button>
+          <button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? 'Đang xử lý...' : isEdit ? 'Cập nhật' : 'Thêm mới'}
+          </button>
         </form>
         <button onClick={closeModal}>Đóng</button>
       </Modal>

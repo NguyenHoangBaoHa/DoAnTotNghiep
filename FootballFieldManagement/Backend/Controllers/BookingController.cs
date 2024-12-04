@@ -2,6 +2,7 @@
 using Backend.Service.Booking;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Backend.Controllers
 {
@@ -17,12 +18,11 @@ namespace Backend.Controllers
         }
 
         [HttpGet]
-        [Authorize(Policy = "AdminOrStaffPolicy")]
-        public async Task<ActionResult<IEnumerable<BookingDto>>> GetBookings()
+        [Authorize]
+        public async Task<IActionResult> GetBookings()
         {
-            var role = User.FindFirst("role")?.Value;
-
-            if(string.IsNullOrWhiteSpace(role))
+            var role = User.Claims.FirstOrDefault(c=>c.Type == ClaimTypes.Role)?.Value;
+            if(string.IsNullOrEmpty(role) )
             {
                 return Unauthorized();
             }
@@ -31,19 +31,17 @@ namespace Backend.Controllers
             return Ok(bookings);
         }
 
-        [HttpPut("{id}/Check-in")]
-        [Authorize(Policy ="StaffOnly")]
-        public async Task<IActionResult> UpdateBookingCheckInStatus(int id, [FromBody] bool checkIn)
+        [HttpPut("update-checkedin/{id}")]
+        [Authorize(Policy ="StaffOnlly")]
+        public async Task<IActionResult> UpdateCheckedInStatus(int id, [FromBody] bool hasCheckedIn)
         {
-            try
+            var result = await _service.UpdateCheckedInStatusAsync(id, hasCheckedIn);
+            if(!result)
             {
-                await _service.UpdateBookingCheckInStatusAsync(id, checkIn);
-                return NoContent();
+                return NotFound(new { message = "Booking not found" });
             }
-            catch (Exception ex)
-            {
-                return NotFound(new { message = ex.Message });
-            }
+
+            return Ok(new { message = "Checked-in status updated successfully" });
         }
     }
 }

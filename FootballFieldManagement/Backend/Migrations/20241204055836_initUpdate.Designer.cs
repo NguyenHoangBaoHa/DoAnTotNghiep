@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Backend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241201123038_initUpdate")]
+    [Migration("20241204055836_initUpdate")]
     partial class initUpdate
     {
         /// <inheritdoc />
@@ -70,7 +70,7 @@ namespace Backend.Migrations
                         {
                             Id = 1,
                             Email = "admin",
-                            Password = "$2a$11$1d3yVmN2PIibryBL0R4pjewRY5YRujIr7nUxWahUfJn9mfuTkqxi2",
+                            Password = "$2a$11$L.hBYu5G04H5TTIQQpi.Uu/4TflNehXeSP5VqhsPPuLoXla8jkzoS",
                             Role = "Admin"
                         });
                 });
@@ -87,27 +87,22 @@ namespace Backend.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<bool?>("HasCheckedIn")
-                        .IsRequired()
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
+                        .HasColumnType("bit");
 
                     b.Property<int>("IdCustomer")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdPitchType")
+                    b.Property<int>("IdPitch")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsPaid")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
+                        .HasColumnType("bit");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IdCustomer");
 
-                    b.HasIndex("IdPitchType");
+                    b.HasIndex("IdPitch");
 
                     b.ToTable("Booking", (string)null);
                 });
@@ -277,15 +272,15 @@ namespace Backend.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Backend.Entities.PitchType.Model.PitchTypeModel", "PitchType")
-                        .WithMany()
-                        .HasForeignKey("IdPitchType")
+                    b.HasOne("Backend.Entities.Pitch.Model.PitchModel", "Pitch")
+                        .WithMany("Bookings")
+                        .HasForeignKey("IdPitch")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Customer");
 
-                    b.Navigation("PitchType");
+                    b.Navigation("Pitch");
                 });
 
             modelBuilder.Entity("Backend.Entities.Pitch.Model.PitchModel", b =>
@@ -293,7 +288,7 @@ namespace Backend.Migrations
                     b.HasOne("Backend.Entities.PitchType.Model.PitchTypeModel", "PitchType")
                         .WithMany("Pitches")
                         .HasForeignKey("IdPitchType")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("PitchType");
                 });
@@ -303,6 +298,11 @@ namespace Backend.Migrations
                     b.Navigation("Account")
                         .IsRequired();
 
+                    b.Navigation("Bookings");
+                });
+
+            modelBuilder.Entity("Backend.Entities.Pitch.Model.PitchModel", b =>
+                {
                     b.Navigation("Bookings");
                 });
 

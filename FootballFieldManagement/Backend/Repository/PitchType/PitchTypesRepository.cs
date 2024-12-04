@@ -26,7 +26,7 @@ namespace Backend.Repository.PitchType
         public async Task<PitchTypeModel> GetPitchTypeByNameAsync(string name)
         {
             return await _context.PitchesType
-                .FirstOrDefaultAsync(pt => pt.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+                .FirstOrDefaultAsync(pt => pt.Name.ToLower() == name.ToLower());
         }
 
         public async Task AddAsync(PitchTypeModel pitchType)

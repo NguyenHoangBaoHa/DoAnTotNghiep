@@ -31,6 +31,13 @@ const isAdmin = () => {
   }
 };
 
+// Hàm kiểm tra quyền người dùng trong API
+const checkAdminPermission = () => {
+  if (!isAdmin()) {
+    throw new Error('Bạn không có quyền thực hiện thao tác này.');
+  }
+};
+
 // API Functions
 const AccountAPI = {
   login: async (email, password) => {
@@ -76,65 +83,62 @@ const AccountAPI = {
 const PitchTypesAPI = {
   getAll: async () => {
     try {
-      const token = localStorage.getItem('token');
-      const role = localStorage.getItem('role');
+      checkAdminPermission(); // Kiểm tra quyền Admin
 
-      if (!token) {
-        throw new Error("Token is missing. Please log in again.");
-      }
+      localStorage.getItem('token');
+      localStorage.getItem('role');
 
-      if (role !== "Admin") {
-        throw new Error("You do not have permission to view this data.");
-      }
-
-      const response = await api.get('/PitchTypes/GetAll', {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-
+      const response = await api.get('/PitchTypes/GetAll');
       if (!response || !response.data) {
-        throw new Error("No data in response");
+        throw new Error("Không có dữ liệu trong phản hồi.");
       }
-
       return response.data;
     } catch (error) {
-      console.error("Failed to fetch pitch types:", error);
-      throw new Error(error.response?.data || error.message || "Failed to fetch pitch types");
+      console.error("Lỗi khi tải danh sách loại sân:", error);
+      throw new Error(error.response?.data || error.message || "Lỗi khi tải danh sách loại sân.");
     }
   },
 
   createPitchType: async (pitchTypeData) => {
     try {
-      if (!isAdmin()) throw new Error('You do not have permission to create a pitch type.');
+      checkAdminPermission(); // Kiểm tra quyền Admin
 
       const response = await api.post('/PitchTypes/Add', pitchTypeData);
-      return response.data;
+      console.log("Response: ", response);
+      if (response.status !== 200 && response.status !== 201) {
+        throw new Error('Không thể tạo loại sân.');
+      }
+      return response.data; // Đảm bảo trả về dữ liệu từ API
     } catch (error) {
-      console.error('Failed to create pitch type:', error);
-      throw new Error(error.response?.data || error.message || 'Failed to create pitch type');
+      console.error('Lỗi khi tạo loại sân:', error);
+      throw new Error(error.response?.data || error.message || 'Không thể tạo loại sân');
     }
   },
 
   updatePitchType: async (id, pitchTypeData) => {
     try {
-      if (!isAdmin()) throw new Error('You do not have permission to update this pitch type.');
+      checkAdminPermission(); // Kiểm tra quyền Admin
 
       const response = await api.put(`/PitchTypes/Update/${id}`, pitchTypeData);
-      return response.data;
+      if (response.status !== 200) {
+        throw new Error('Không thể cập nhật loại sân.');
+      }
+      return response.data; // Đảm bảo trả về dữ liệu từ API
     } catch (error) {
-      console.error('Failed to update pitch type:', error);
-      throw new Error(error.response?.data || error.message || 'Failed to update pitch type');
+      console.error('Lỗi khi cập nhật loại sân:', error);
+      throw new Error(error.response?.data || error.message || 'Không thể cập nhật loại sân');
     }
   },
 
   deletePitchType: async (id) => {
     try {
-      if (!isAdmin()) throw new Error('You do not have permission to delete this pitch type.');
+      checkAdminPermission(); // Kiểm tra quyền Admin
 
       const response = await api.delete(`/PitchTypes/Delete/${id}`);
       return response.data;
     } catch (error) {
-      console.error('Failed to delete pitch type:', error);
-      throw new Error(error.response?.data || error.message || 'Failed to delete pitch type');
+      console.error('Lỗi khi xóa loại sân:', error);
+      throw new Error(error.response?.data || error.message || 'Không thể xóa loại sân');
     }
   },
 };

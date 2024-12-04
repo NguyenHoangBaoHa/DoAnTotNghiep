@@ -14,7 +14,8 @@ namespace Backend.Service.Booking
 
         public async Task<IEnumerable<BookingDto>> GetBookingsByRoleAsync(string role)
         {
-            var bookings = await _unitOfWork.Bookings.GetAllBookingsAssync();
+            var bookings = await _unitOfWork.Bookings.GetAllBookingsAsync();
+
             var bookingDtos = bookings.Select(b => new BookingDto
             {
                 Id = b.Id,
@@ -23,25 +24,20 @@ namespace Backend.Service.Booking
                 IsPaid = b.IsPaid,
                 CustomerName = b.Customer.DisplayName,
                 CustomerPhone = b.Customer.PhoneNumber,
-                PitchTypeName = b.PitchType.Name
+                PitchDetails = $"{b.Pitch.Name} - {b.Pitch.PitchType.Name}"
             }).ToList();
-
+            
             if(role == "Admin")
             {
-                bookingDtos.ForEach(dto => dto.HasCheckedIn = null);
+                bookingDtos.ForEach(dto => dto.HasCheckedIn = null); // Admin không cần hiển thị "Nhận Sân"
             }
 
             return bookingDtos;
         }
 
-        public async Task UpdateBookingCheckInStatusAsync(int IdBooking, bool checkIn)
+        public async Task<bool> UpdateCheckedInStatusAsync(int bookingId, bool hasCheckedIn)
         {
-            var booking = await _unitOfWork.Bookings.GetByIdAssync(IdBooking);
-            if(booking != null)
-            {
-                booking.HasCheckedIn = checkIn;
-                await _unitOfWork.Bookings.UpdateAssync(booking);
-            }
+            return await _unitOfWork.Bookings.UpdateCheckedInStatusAsync(bookingId, hasCheckedIn);
         }
     }
 }

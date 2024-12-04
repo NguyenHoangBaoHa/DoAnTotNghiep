@@ -24,16 +24,19 @@ namespace Backend.Mapper
             CreateMap<PitchTypeModel, PitchTypeDto>().ReverseMap();
 
             CreateMap<BookingModel, BookingDto>()
-            .ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => src.Customer.DisplayName)) // Ánh xạ tên khách hàng
-            .ForMember(dest => dest.CustomerPhone, opt => opt.MapFrom(src => src.Customer.PhoneNumber)) // Ánh xạ số điện thoại khách hàng
-            .ForMember(dest => dest.PitchTypeName, opt => opt.MapFrom(src => src.PitchType.Name)) // Ánh xạ tên loại sân
-            .ForMember(dest => dest.IsPaid, opt => opt.MapFrom(src => src.IsPaid)) // Trạng thái thanh toán
-            .ForMember(dest => dest.HasCheckedIn, opt => opt.MapFrom(src => src.HasCheckedIn)) // Trạng thái nhận sân
-            .ForMember(dest => dest.BookingDate, opt => opt.MapFrom(src => src.BookingDate)) // Ngày đặt sân
-            .ReverseMap() // Hỗ trợ ánh xạ ngược từ DTO sang Model
-            .ForPath(src => src.Customer.DisplayName, opt => opt.Ignore()) // Bỏ qua khi ánh xạ ngược
-            .ForPath(src => src.Customer.PhoneNumber, opt => opt.Ignore()) // Bỏ qua khi ánh xạ ngược
-            .ForPath(src => src.PitchType.Name, opt => opt.Ignore()); // Bỏ qua khi ánh xạ ngược
+                .ForMember(dest => dest.CustomerName, opt => opt.MapFrom(src => src.Customer.DisplayName)) // Ánh xạ tên khách hàng
+                .ForMember(dest => dest.CustomerPhone, opt => opt.MapFrom(src => src.Customer.PhoneNumber)) // Ánh xạ số điện thoại khách hàng
+                .ForMember(dest => dest.PitchName, opt => opt.MapFrom(src => src.Pitch.Name)) // Ánh xạ tên sân
+                .ForMember(dest => dest.PitchTypeName, opt => opt.MapFrom(src => src.Pitch.PitchType.Name)) // Ánh xạ tên loại sân
+                .ForMember(dest => dest.IsPaid, opt => opt.MapFrom(src => src.IsPaid)) // Trạng thái thanh toán
+                .ForMember(dest => dest.HasCheckedIn, opt => opt.MapFrom(src => src.HasCheckedIn)) // Trạng thái nhận sân
+                .ForMember(dest => dest.BookingDate, opt => opt.MapFrom(src => src.BookingDate)) // Ngày đặt sân
+                .ReverseMap() // Hỗ trợ ánh xạ ngược từ DTO sang Model
+                .ForPath(src => src.Customer.DisplayName, opt => opt.Ignore()) // Bỏ qua khi ánh xạ ngược
+                .ForPath(src => src.Customer.PhoneNumber, opt => opt.Ignore()) // Bỏ qua khi ánh xạ ngược
+                .ForPath(src => src.Pitch.Name, opt => opt.Ignore()) // Bỏ qua khi ánh xạ ngược
+                .ForPath(src => src.Pitch.PitchType.Name, opt => opt.Ignore()); // Bỏ qua khi ánh xạ ngược
+
         }
     }
 }

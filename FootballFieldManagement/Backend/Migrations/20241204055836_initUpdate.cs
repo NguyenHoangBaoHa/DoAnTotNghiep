@@ -11,6 +11,10 @@ namespace Backend.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Pitch_PitchesType_IdPitchType",
+                table: "Pitch");
+
             migrationBuilder.CreateTable(
                 name: "Booking",
                 columns: table => new
@@ -18,10 +22,10 @@ namespace Backend.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BookingDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    HasCheckedIn = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    IsPaid = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
+                    HasCheckedIn = table.Column<bool>(type: "bit", nullable: true),
+                    IsPaid = table.Column<bool>(type: "bit", nullable: false),
                     IdCustomer = table.Column<int>(type: "int", nullable: false),
-                    IdPitchType = table.Column<int>(type: "int", nullable: false)
+                    IdPitch = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -33,9 +37,9 @@ namespace Backend.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Booking_PitchesType_IdPitchType",
-                        column: x => x.IdPitchType,
-                        principalTable: "PitchesType",
+                        name: "FK_Booking_Pitch_IdPitch",
+                        column: x => x.IdPitch,
+                        principalTable: "Pitch",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -45,7 +49,7 @@ namespace Backend.Migrations
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "Password",
-                value: "$2a$11$1d3yVmN2PIibryBL0R4pjewRY5YRujIr7nUxWahUfJn9mfuTkqxi2");
+                value: "$2a$11$L.hBYu5G04H5TTIQQpi.Uu/4TflNehXeSP5VqhsPPuLoXla8jkzoS");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Booking_IdCustomer",
@@ -53,14 +57,26 @@ namespace Backend.Migrations
                 column: "IdCustomer");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Booking_IdPitchType",
+                name: "IX_Booking_IdPitch",
                 table: "Booking",
-                column: "IdPitchType");
+                column: "IdPitch");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Pitch_PitchesType_IdPitchType",
+                table: "Pitch",
+                column: "IdPitchType",
+                principalTable: "PitchesType",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Pitch_PitchesType_IdPitchType",
+                table: "Pitch");
+
             migrationBuilder.DropTable(
                 name: "Booking");
 
@@ -70,6 +86,14 @@ namespace Backend.Migrations
                 keyValue: 1,
                 column: "Password",
                 value: "$2a$11$TiirXeau5Igyk1cKv.hB8uo40tNaqfOiWfveLeoHdZ9fEIYOkGjpO");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Pitch_PitchesType_IdPitchType",
+                table: "Pitch",
+                column: "IdPitchType",
+                principalTable: "PitchesType",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.SetNull);
         }
     }
 }

@@ -124,38 +124,42 @@ namespace Backend.Data
                 .HasForeignKey(p => p.IdPitchType)
                 .OnDelete(DeleteBehavior.SetNull); // Xóa sân sẽ không xóa loại sân
 
-            // Cấu hình bảng Booking
+            // Cấu hình cho bảng Booking
             modelBuilder.Entity<BookingModel>()
                 .ToTable("Booking")
                 .HasKey(b => b.Id);
 
             modelBuilder.Entity<BookingModel>()
-                .Property(b => b.BookingDate)
-                .IsRequired();
-
-            modelBuilder.Entity<BookingModel>()
-                .Property(b => b.HasCheckedIn)
-                .IsRequired()
-                .HasDefaultValue(false); // Mặc định chưa check-in
-
-            modelBuilder.Entity<BookingModel>()
-                .Property(b => b.IsPaid)
-                .IsRequired()
-                .HasDefaultValue(false); // Mặc định chưa thanh toán
-
-            // Thiết lập quan hệ giữa Booking và Customer
-            modelBuilder.Entity<BookingModel>()
                 .HasOne(b => b.Customer)
                 .WithMany(c => c.Bookings)
                 .HasForeignKey(b => b.IdCustomer)
-                .OnDelete(DeleteBehavior.Restrict); // Không xóa booking khi xóa customer
+                .OnDelete(DeleteBehavior.Restrict);
 
-            // Thiết lập quan hệ giữa Booking và PitchType
             modelBuilder.Entity<BookingModel>()
-                .HasOne(b => b.PitchType)
-                .WithMany()
-                .HasForeignKey(b => b.IdPitchType)
-                .OnDelete(DeleteBehavior.Restrict); // Không xóa booking khi xóa loại sân
+                .HasOne(b => b.Pitch)
+                .WithMany(p => p.Bookings)
+                .HasForeignKey(b => b.IdPitch)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            // Cấu hình cho bảng Pitch
+            modelBuilder.Entity<PitchModel>()
+                .ToTable("Pitch")
+                .HasKey(p => p.Id);
+
+            modelBuilder.Entity<PitchModel>()
+                .Property(p => p.Name)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            modelBuilder.Entity<PitchModel>()
+                .Property(p => p.Status)
+                .IsRequired();
+
+            modelBuilder.Entity<PitchModel>()
+                .HasOne(p => p.PitchType)
+                .WithMany(pt => pt.Pitches)
+                .HasForeignKey(p => p.IdPitchType)
+                .OnDelete(DeleteBehavior.Cascade); // Xóa loại sân sẽ xóa sân
         }
     }
 }

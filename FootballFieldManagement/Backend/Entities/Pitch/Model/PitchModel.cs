@@ -1,4 +1,5 @@
-﻿using Backend.Entities.Enums;
+﻿using Backend.Entities.Booking.Model;
+using Backend.Entities.Enums;
 using Backend.Entities.PitchType.Model;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -22,5 +23,7 @@ namespace Backend.Entities.Pitch.Model
 
         public DateTime CreateAt { get; set; } = DateTime.UtcNow;
         public DateTime UpdateAt { get; set; } = DateTime.UtcNow;
+
+        public virtual ICollection<BookingModel> Bookings { get; set; }
     }
 }

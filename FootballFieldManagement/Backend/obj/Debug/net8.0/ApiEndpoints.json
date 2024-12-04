@@ -55,22 +55,12 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[Backend.Entities.Booking.Dto.BookingDto, Backend, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
+    "ReturnTypes": []
   },
   {
     "ContainingType": "Backend.Controllers.BookingController",
-    "Method": "UpdateBookingCheckInStatus",
-    "RelativePath": "api/Booking/{id}/Check-in",
+    "Method": "UpdateCheckedInStatus",
+    "RelativePath": "api/Booking/update-checkedin/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -81,7 +71,7 @@
         "IsRequired": true
       },
       {
-        "Name": "checkIn",
+        "Name": "hasCheckedIn",
         "Type": "System.Boolean",
         "IsRequired": true
       }

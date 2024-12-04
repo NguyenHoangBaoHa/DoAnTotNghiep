@@ -4,8 +4,7 @@ namespace Backend.Repository.Booking
 {
     public interface IBookingRepository
     {
-        Task<IEnumerable<BookingModel>> GetAllBookingsAssync();
-        Task<BookingModel> GetByIdAssync(int Idbooking);
-        Task UpdateAssync(BookingModel booking);
+        Task<List<BookingModel>> GetAllBookingsAsync();
+        Task<bool> UpdateCheckedInStatusAsync(int bookingId, bool hasCheckedIn);
     }
 }
