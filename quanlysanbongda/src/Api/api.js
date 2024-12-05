@@ -31,13 +31,6 @@ const isAdmin = () => {
   }
 };
 
-// Hàm kiểm tra quyền người dùng trong API
-const checkAdminPermission = () => {
-  if (!isAdmin()) {
-    throw new Error('Bạn không có quyền thực hiện thao tác này.');
-  }
-};
-
 // API Functions
 const AccountAPI = {
   login: async (email, password) => {
@@ -83,8 +76,7 @@ const AccountAPI = {
 const PitchTypesAPI = {
   getAll: async () => {
     try {
-      checkAdminPermission(); // Kiểm tra quyền Admin
-
+      isAdmin(true);
       localStorage.getItem('token');
       localStorage.getItem('role');
 
@@ -101,8 +93,7 @@ const PitchTypesAPI = {
 
   createPitchType: async (pitchTypeData) => {
     try {
-      checkAdminPermission(); // Kiểm tra quyền Admin
-
+      isAdmin(true);
       const response = await api.post('/PitchTypes/Add', pitchTypeData);
       console.log("Response: ", response);
 
@@ -121,8 +112,7 @@ const PitchTypesAPI = {
 
   updatePitchType: async (id, pitchTypeData) => {
     try {
-      checkAdminPermission(); // Kiểm tra quyền Admin
-
+      isAdmin(true);
       const response = await api.put(`/PitchTypes/Update/${id}`, pitchTypeData);
       if (response.status !== 200) {
         throw new Error('Không thể cập nhật loại sân.');
@@ -136,8 +126,7 @@ const PitchTypesAPI = {
 
   deletePitchType: async (id) => {
     try {
-      checkAdminPermission(); // Kiểm tra quyền Admin
-
+      isAdmin(true);
       const response = await api.delete(`/PitchTypes/Delete/${id}`);
       return response.data;
     } catch (error) {
