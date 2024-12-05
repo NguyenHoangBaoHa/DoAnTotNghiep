@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://192.168.0.2:8001/api', // Đảm bảo URL đúng
+  baseURL: 'https://localhost:8001/api', // Đảm bảo URL đúng
   headers: {
     'Content-Type': 'application/json',
   },
