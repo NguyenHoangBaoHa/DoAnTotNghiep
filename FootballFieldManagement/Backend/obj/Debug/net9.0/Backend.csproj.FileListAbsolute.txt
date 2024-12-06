@@ -159,3 +159,11 @@ D:\Projects\DoAnTotNghiep_BaoHa\FootballFieldManagement\Backend\obj\Debug\net9.0
 D:\Projects\DoAnTotNghiep_BaoHa\FootballFieldManagement\Backend\obj\Debug\net9.0\Backend.pdb
 D:\Projects\DoAnTotNghiep_BaoHa\FootballFieldManagement\Backend\obj\Debug\net9.0\Backend.genruntimeconfig.cache
 D:\Projects\DoAnTotNghiep_BaoHa\FootballFieldManagement\Backend\obj\Debug\net9.0\ref\Backend.dll
+E:\Demo\1\FootballFieldManagement\Backend\obj\Debug\net9.0\Backend.csproj.AssemblyReference.cache
+E:\Demo\1\FootballFieldManagement\Backend\obj\Debug\net9.0\Backend.GeneratedMSBuildEditorConfig.editorconfig
+E:\Demo\1\FootballFieldManagement\Backend\obj\Debug\net9.0\Backend.AssemblyInfoInputs.cache
+E:\Demo\1\FootballFieldManagement\Backend\obj\Debug\net9.0\Backend.AssemblyInfo.cs
+E:\Demo\1\FootballFieldManagement\Backend\obj\Debug\net9.0\Backend.csproj.CoreCompileInputs.cache
+E:\Demo\1\FootballFieldManagement\Backend\obj\Debug\net9.0\Backend.MvcApplicationPartsAssemblyInfo.cs
+E:\Demo\1\FootballFieldManagement\Backend\obj\Debug\net9.0\Backend.MvcApplicationPartsAssemblyInfo.cache
+E:\Demo\1\FootballFieldManagement\Backend\obj\Debug\net9.0\Backend.sourcelink.json
