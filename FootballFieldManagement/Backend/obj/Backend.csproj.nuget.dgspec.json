@@ -1,34 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Backend.csproj": {}
+    "D:\\Projects\\DoAnTotNghiep_BaoHa\\FootballFieldManagement\\Backend\\Backend.csproj": {}
   },
   "projects": {
-    "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Backend.csproj": {
+    "D:\\Projects\\DoAnTotNghiep_BaoHa\\FootballFieldManagement\\Backend\\Backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Backend.csproj",
+        "projectUniqueName": "D:\\Projects\\DoAnTotNghiep_BaoHa\\FootballFieldManagement\\Backend\\Backend.csproj",
         "projectName": "Backend",
-        "projectPath": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Backend.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\obj\\",
+        "projectPath": "D:\\Projects\\DoAnTotNghiep_BaoHa\\FootballFieldManagement\\Backend\\Backend.csproj",
+        "packagesPath": "C:\\Users\\tican\\.nuget\\packages\\",
+        "outputPath": "D:\\Projects\\DoAnTotNghiep_BaoHa\\FootballFieldManagement\\Backend\\obj\\",
         "projectStyle": "PackageReference",
+        "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\tican\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net8.0"
+          "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files (x86)\\Progress\\Telerik UI for ASP.NET Core R2 2021\\wrappers\\aspnetcore\\Binaries\\AspNet.Core": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net8.0": {
-            "targetAlias": "net8.0",
+          "net9.0": {
+            "targetAlias": "net9.0",
             "projectReferences": {}
           }
         },
@@ -40,12 +37,12 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "direct"
+          "auditMode": "all"
         }
       },
       "frameworks": {
-        "net8.0": {
-          "targetAlias": "net8.0",
+        "net9.0": {
+          "targetAlias": "net9.0",
           "dependencies": {
             "AutoMapper": {
               "target": "Package",
@@ -61,31 +58,31 @@
             },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
-              "version": "[8.0.11, )"
+              "version": "[9.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.11, )"
+              "version": "[9.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
-              "version": "[8.0.11, )"
+              "version": "[9.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.11, )"
+              "version": "[9.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.11, )"
+              "version": "[9.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[7.0.0, )"
+              "version": "[7.1.0, )"
             }
           },
           "imports": [
@@ -107,7 +104,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
