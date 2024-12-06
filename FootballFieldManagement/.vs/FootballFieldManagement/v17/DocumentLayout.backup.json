@@ -7,12 +7,16 @@
       "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\extensions\\dependencyinjectionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\mapper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\mapper\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|e:\\demo\\1\\footballfieldmanagement\\backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F9E7D2BB-8C06-4B99-A191-DB575F6DBAE1}|Backend\\Backend.csproj|solutionrelative:backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 232,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,7 +34,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Program.cs",
+              "RelativeDocumentMoniker": "Backend\\Program.cs",
+              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Program.cs",
+              "RelativeToolTip": "Backend\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-06T06:40:30.04Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Mapper\\MappingProfile.cs",
               "RelativeDocumentMoniker": "Backend\\Mapper\\MappingProfile.cs",
@@ -38,7 +55,8 @@
               "RelativeToolTip": "Backend\\Mapper\\MappingProfile.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-06T06:33:52.339Z"
+              "WhenOpened": "2024-12-06T06:33:52.339Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -48,22 +66,23 @@
               "RelativeDocumentMoniker": "Backend\\Extensions\\DependencyInjectionExtensions.cs",
               "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Extensions\\DependencyInjectionExtensions.cs",
               "RelativeToolTip": "Backend\\Extensions\\DependencyInjectionExtensions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-06T06:27:57.843Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Backend.csproj",
               "DocumentMoniker": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Backend.csproj",
               "RelativeDocumentMoniker": "Backend\\Backend.csproj",
-              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Backend.csproj",
-              "RelativeToolTip": "Backend\\Backend.csproj",
+              "ToolTip": "E:\\Demo\\1\\FootballFieldManagement\\Backend\\Backend.csproj*",
+              "RelativeToolTip": "Backend\\Backend.csproj*",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-12-06T06:24:21.103Z"
+              "WhenOpened": "2024-12-06T06:24:21.103Z",
+              "EditorCaption": ""
             }
           ]
         }
